@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cartelera - Auditorio Explanada Puebla</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      background-color: #fff;
+    }
+
+    nav {
+      background: #222;
+      padding: 10px 20px;
+    }
+
+    nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    nav li {
+      margin-right: 15px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 0 20px;
+    }
+
+    /* Imagen principal ajustada */
+    .events-header-image {
+      width: 100%;       /* Ajusta al ancho del contenedor */
+      height: auto;      /* Mantiene proporción */
+      border-radius: 8px;
+      margin-bottom: 20px;
+      display: block;
+      object-fit: cover;
+    }
+
+    h2.section-title {
+      font-size: 1.8em;
+      margin-bottom: 20px;
+    }
+
+    /* Estilo para eventos sin imagen */
+    .event {
+      display: flex;
+      justify-content: flex-start; /* Cambio para mejor alineación sin imagen */
+      align-items: center;
+      background-color: #f9f9f9;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    .event .info {
+      display: flex;
+      align-items: center;
+      gap: 15px; /* separación entre fecha y detalles */
+    }
+
+    .event .date {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #000;
+      min-width: 60px;
+    }
+
+    .event .details h4 {
+      margin: 0;
+      font-size: 1.2em;
+      color: #000;
+    }
+
+    .event .details .time,
+    .event .details .location {
+      font-size: 0.95em;
+      color: #555;
+    }
+
+    .event .buy-button {
+      margin-left: auto; /* Empuja el botón al extremo derecho */
+    }
+
+    .event .buy-button a {
+      background-color: #000;
+      color: #fff;
+      text-decoration: none;
+      padding: 0.6rem 1rem;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+      white-space: nowrap;
+    }
+
+    .event .buy-button a:hover {
+      background-color: #222;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 0.9em;
+      margin: 50px 0 20px;
+      color: #888;
+    }
+
+    /* Responsive: para pantallas pequeñas */
+    @media (max-width: 600px) {
+      .event {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .event .buy-button {
+        margin-top: 10px;
+        width: 100%;
+        margin-left: 0;
+      }
+
+      .event .buy-button a {
+        display: block;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  </style>
+<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+</head>
+<body>
+
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Nosotros</a></li>
+      <li><a href="#">Cartelera</a></li>
+      <li><a href="#">Faqs</a></li>
+      <li><a href="#">Comunícate con nosotros</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    
+    <!-- Imagen principal antes de los eventos -->
+    <img class="events-header-image" src="exp.jpg" alt="Imagen principal antes de eventos" />
+
+    <h2 class="section-title">NUESTROS EVENTOS</h2>
+
+    <!-- Evento 1 -->
+    <div class="event">
+      <div class="info">
+        <div class="date">22 AGO</div>
+        <div class="details">
+          <h4>"Las 50 sombras de Tila"</h4>
+          <div class="time">5:00 P.M.   7:00 P.M.  9:00 P.M.</div>
+          <div class="location">Auditorio Explanada</div>
+        </div>
+      </div>
+
+      <div class="buy-button">
+        <a href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7?useEmbed=true" target="_blank">Compra tus boletos</a>
+      </div>
+    </div>
+
+    <!-- Evento 2 -->
+    <div class="event">
+      <div class="info">
+        <div class="date">29 AGO</div>
+        <div class="details">
+          <h4>El Mundo de Fede Vigevani</h4>
+          <div class="time">9:00 P.M.</div>
+          <div class="location">Auditorio Explanada</div>
+        </div>
+      </div>
+
+      <div class="buy-button">
+        <a href="https://prueba.tuticket.com.mx/event/el-mundo-de-fede-vigevani-oftp0d" target="_blank">Compra tus boletos</a>
+      </div>
+    </div>
+
+    <!-- Evento 3 -->
+    <div class="event">
+      <div class="info">
+        <div class="date">30 AGO</div>
+        <div class="details">
+          <h4>Kabrönes (Ex Mago de Oz)</h4>
+          <div class="time">7:30 P.M.</div>
+          <div class="location">Auditorio Explanada</div>
+        </div>
+      </div>
+
+      <div class="buy-button">
+        <a href="https://boletos.blackticket.com.mx/tickets/es/entradas-musica-los-kabrones" target="_blank">Compra tus boletos</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Auditorio Explanada Puebla · Malltertaiment, Explanada Puebla, Cholula, Puebla 72774, México<br />
+    Copyright © 2025‑2026 Auditorio Explanada Puebla – Todos los derechos reservados.
+  </div>
+  
+</body>
+</html>
+
