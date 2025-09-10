@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eventos Deportivos</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            background-color: #ffffff;
+            color: #1a1a1a;
+        }
+
+        /* Navegación */
+        nav {
+            background-color: #002E5D; /* Azul Tec */
+            padding: 15px 30px;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Contenedor principal */
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 40px;
+            color: #002E5D;
+        }
+
+        .evento {
+            background-color: #f2f2f2;
+            border: 2px solid #dcdcdc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .contenido {
+            flex: 2;
+        }
+
+        .evento h2 {
+            color: #002E5D;
+            margin-top: 0;
+        }
+
+        .fecha {
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .descripcion {
+            margin: 15px 0;
+        }
+
+        /* Botón destacado */
+        .btn-comprar {
+            background-color: #002E5D;
+            color: #ffffff;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1em;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-comprar:hover {
+            background-color: #001d3a;
+        }
+
+        /* Imagen */
+        .imagen {
+            flex: 1;
+            max-width: 250px;
+            height: 150px;
+            background-color: #ddd;
+            border-radius: 10px;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .imagen img {
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+    </style>
+    <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+</head>
+<body>
+
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Eventos</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="container">
+        <h1>Próximos Partidos</h1>
+
+        <div class="evento">
+            <div class="contenido">
+                <h2>Fútbol: Real Madrid vs Barcelona</h2>
+                <p class="fecha">Fecha: 15 de Septiembre, 2025</p>
+                <p class="descripcion">El clásico del fútbol español. Vive la emoción en el Estadio Santiago Bernabéu.</p>
+                <a class="btn-comprar" href="https://prueba.tuticket.com.mx/event/barca-vs-real-madrid-867ls1?useEmbed=true">¡Comprar Entradas!</a>
+            </div>
+            <div class="imagen">
+                <img src="partido.jpg" alt="Real Madrid vs Barcelona">
+            </div>
+        </div>
+
+        <div class="evento">
+            <div class="contenido">
+                <h2>Básquetbol: Lakers vs Warriors</h2>
+                <p class="fecha">Fecha: 20 de Septiembre, 2025</p>
+                <p class="descripcion">Un duelo explosivo en la NBA entre dos gigantes del oeste.</p>
+                <a class="btn-comprar" href="https://prueba.tuticket.com.mx/event/lakers-vs-warriors-sai93h">¡Comprar Entradas!</a>
+            </div>
+            <div class="imagen">
+                <img src="LAKERS.jpg" alt="Lakers vs Warriors">
+            </div>
+        </div> 
+
+        <div class="evento">
+            <div class="contenido">
+                <h2>Fútbol Americano: Patriots vs Cowboys</h2>
+                <p class="fecha">Fecha: 28 de Septiembre, 2025</p>
+                <p class="descripcion">Choque imperdible de la NFL. Vive la adrenalina en cada jugada.</p>
+                <a class="btn-comprar"  href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7?useEmbed=true">¡Comprar Entradas!</a>
+            </div>
+            <div class="imagen">
+                <img src="CONF.jpg" alt="Patriots vs Cowboys">
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
