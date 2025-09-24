@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Entretenimiento</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #111111;
+      color: #e5e5e5;
+    }
+
+    header {
+      background-color: #1d1d1b;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    nav {
+      background-color: #1d1d1b;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 1rem 0;
+    }
+
+    nav ul li {
+      margin: 0 1rem;
+    }
+
+    nav a {
+      color: #bfa14b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh; /* Ocupa toda la pantalla */
+      background-image: url('car.jpg'); /* Usa tu imagen directamente */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(0, 0, 0, 0.3); /* Capa oscura encima si deseas */
+    }
+
+    .content {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .content h2 {
+      color: #bfa14b;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: #1d1d1b;
+      color: #e5e5e5;
+      border: 1px solid #333;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.4);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+    }
+
+    .card img {
+      width: 100%;
+      display: block;
+    }
+
+    .card-body {
+      padding: 1rem;
+    }
+
+    .card-body h3 {
+      margin-bottom: 0.5rem;
+      color: #bfa14b;
+    }
+
+    .card-body p {
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .card-body a {
+      color: #bfa14b;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .card-body a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      background-color: #1d1d1b;
+      color: #888;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+  <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+</head>
+<body>
+
+  <header>
+    <!-- Título oculto o eliminado -->
+  </header>
+
+  <nav>
+    <ul>
+      <li><a href="#">Inicio</a></li>
+      <li><a href="#">Eventos</a></li>
+      <li><a href="#">Artistas</a></li>
+      <li><a href="#">Noticias</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <!-- Aquí podrías añadir texto encima de la imagen si quieres -->
+  </section>
+
+  <div class="content">
+    <h2>Próximos Eventos</h2>
+    <div class="cards">
+
+      <!-- Evento 1 -->
+      <div class="card">
+        <img src="trono.png" alt="Evento 1" />
+        <div class="card-body">
+          <h3>EL TRONO DE MÉXICO</h3>
+          <p>Disfruta de la mejor música en vivo con artistas nacionales. 12 de Octubre - Foro Imperial.</p>
+          <a href="https://prueba.tuticket.com.mx/event/el-mundo-de-fede-vigevani-copy-p8vyye?useEmbed=true">Ver más</a>
+        </div>
+      </div>
+
+      <!-- Evento 2 -->
+      <div class="card">
+        <img src="con.jpg" alt="Evento 2" />
+        <div class="card-body">
+          <h3>CONCIERTO GALÁCTICO</h3>
+          <p>Disfruta deL concierto musical más emocionante del año. </p>
+          <a href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7">Ver más</a>
+        </div>
+      </div>
+
+      <!-- Evento 3 -->
+      <div class="card">
+        <img src="BAR.jpg" alt="Evento 3" />
+        <div class="card-body">
+          <h3>BARCELONA VS REAL MADRID</h3>
+          <p>Disfruta del partido más esperado de la temporada.</p>
+          <a href="https://prueba.tuticket.com.mx/event/barca-vs-real-madrid-867ls1?useEmbed=true">Ver más</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2025 Entretenimiento. Todos los derechos reservados.</p>
+  </footer>
+
+</body>
+</html>
+
