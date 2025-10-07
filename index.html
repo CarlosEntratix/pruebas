@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TuBoletos – Eventos destacados</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 1rem;
+    }
+    header nav a {
+      color: white;
+      margin-right: 1rem;
+      text-decoration: none;
+    }
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+      background-color: #FF671B;
+      color: white;
+    }
+    .hero h1 {
+      margin: 0;
+    }
+    .events-section {
+      max-width: 1000px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    .events-section h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    .event-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .event-card {
+      background-color: white;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: calc(33% - 1rem);
+      margin-bottom: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+    .event-card img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .event-content {
+      padding: 1rem;
+      flex-grow: 1;
+    }
+    .event-content h3 {
+      margin-top: 0;
+    }
+    .event-content p {
+      margin: 0.5rem 0;
+    }
+    .event-content .btn {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background-color: #FF671B;
+      color: white;
+      text-decoration: none;
+      border-radius: 3px;
+    }
+    @media (max-width: 768px) {
+      .event-card {
+        width: 100%;
+      }
+    }
+    footer {
+      background-color: #222;
+      color: white;
+      text-align: center;
+      padding: 1rem 0;
+      margin-top: 2rem;
+    }
+  </style>
+  <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <a href="#">Eventos</a>
+      <a href="#">Puntos de venta</a>
+      <a href="#">¿Cómo comprar?</a>
+      <a href="#">Preguntas frecuentes</a>
+      <a href="#">Vende con nosotros</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>No hagas fila, compra en línea</h1>
+    <p>Los mejores eventos cerca de ti</p>
+    <a class="btn" href="#">Ver más</a>
+  </section>
+
+  <section class="events-section">
+    <h2>Eventos destacados</h2>
+    <div class="event-list">
+      <!-- Evento 1 -->
+      <div class="event-card">
+        <img src="trono.png" alt="Imagen">
+        <div class="event-content">
+          <h3>El trono de México</h3>
+          <p>Ciudad, Estado</p>
+          <p>Viernes 17 de Octubre 2025</p>
+          <a class="btn" href="https://prueba.tuticket.com.mx/event/el-mundo-de-fede-vigevani-copy-p8vyye?useEmbed=true">Ver evento</a>
+        </div>
+      </div>
+
+      <!-- Evento 2 -->
+      <div class="event-card">
+        <img src="images.jpg" alt="Imagen Evento 2">
+        <div class="event-content">
+          <h3>Amanda Miguel</h3>
+          <p>Ciudad, Estado</p>
+          <p>Jueves 9 de Octubre 2025 - 15:30 hrs</p>
+          <p>Jueves 9 de Octubre 2025 - 18:30 hrs</p>
+          <a class="btn" href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-funciones-30wigt?recurrenceSelection=true">Ver evento</a>
+        </div>
+      </div>
+
+      <!-- Evento 3 -->
+      <div class="event-card">
+        <img src="con.jpg" alt="Imagen Evento 3">
+        <div class="event-content">
+          <h3>Concierto Galactico</h3>
+          <p>Ciudad, Estado</p>
+          <p>Viernes 31 de Octubre 2025</p>
+          <a class="btn" href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7?useEmbed=true">Ver evento</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    &copy; 2025 TuBoletos.mx | No hagas fila, compra en línea. Todos los derechos reservados.
+  </footer>
+
+</body>
+</html>
