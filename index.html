@@ -1,159 +1,239 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>TuBoletos – Eventos destacados</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Demo Boletos - Estilo Dark Emerald</title>
+
   <style>
+    :root {
+      --fondo: #121212;
+      --tarjeta: #1E1E1E;
+      --texto: #EAEAEA;
+      --verde: #2ECC71;
+      --verde-oscuro: #25A25A;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
+      font-family: "Arial", sans-serif;
+      background: var(--fondo);
+      color: var(--texto);
     }
+
+    /* HEADER */
     header {
-      background-color: #222;
-      color: white;
-      padding: 1rem;
-    }
-    header nav a {
-      color: white;
-      margin-right: 1rem;
-      text-decoration: none;
-    }
-    .hero {
-      text-align: center;
-      padding: 2rem 1rem;
-      background-color: #FF671B;
-      color: white;
-    }
-    .hero h1 {
-      margin: 0;
-    }
-    .events-section {
-      max-width: 1000px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    .events-section h2 {
-      text-align: center;
-      margin-bottom: 1.5rem;
-    }
-    .event-list {
+      background: var(--tarjeta);
+      color: var(--texto);
+      padding: 18px 30px;
       display: flex;
-      flex-wrap: wrap;
       justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--verde);
     }
-    .event-card {
-      background-color: white;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      width: calc(33% - 1rem);
-      margin-bottom: 1.5rem;
+
+    header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--verde);
+    }
+
+    header nav a {
+      color: var(--texto);
+      margin-left: 25px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* HERO */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+        url("https://images.unsplash.com/photo-1515165562835-c4c4f09f6a99?auto=format&fit=crop&w=1200&q=80")
+        center/cover;
+      height: 350px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--verde);
+      text-shadow: 0 3px 10px rgba(0,0,0,0.8);
+    }
+
+    /* EVENTOS CONTENEDOR */
+    .eventos {
+      max-width: 1000px;
+      margin: 50px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .eventos h2 {
+      font-size: 2rem;
+      color: var(--verde);
+      margin-bottom: 25px;
+    }
+
+    .grid-eventos {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* TARJETAS */
+    .evento {
+      background: var(--tarjeta);
+      border-radius: 14px;
+      width: 280px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
       display: flex;
       flex-direction: column;
-      overflow: hidden;
+      transition: 0.3s;
+      border: 1px solid #1a1a1a;
     }
-    .event-card img {
+
+    .evento:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+    }
+
+    .evento img {
       width: 100%;
-      height: auto;
-      display: block;
+      height: 170px;
+      object-fit: cover;
     }
-    .event-content {
-      padding: 1rem;
+
+    .info {
+      padding: 15px;
       flex-grow: 1;
     }
-    .event-content h3 {
-      margin-top: 0;
+
+    .info h3 {
+      margin: 5px 0;
+      font-size: 1.25rem;
+      color: var(--verde);
+      font-weight: bold;
     }
-    .event-content p {
-      margin: 0.5rem 0;
+
+    .info p {
+      margin: 6px 0;
+      font-size: 0.95rem;
+      color: #cccccc;
     }
-    .event-content .btn {
-      display: inline-block;
-      padding: 0.5rem 1rem;
-      background-color: #FF671B;
-      color: white;
-      text-decoration: none;
-      border-radius: 3px;
-    }
-    @media (max-width: 768px) {
-      .event-card {
-        width: 100%;
-      }
-    }
-    footer {
-      background-color: #222;
-      color: white;
+
+    /* BOTÓN */
+    .btn, .vivenu-btn {
+      margin: 15px auto 20px;
+      width: 85%;
+      padding: 12px 20px;
+      background: var(--verde);
+      color: black !important;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
       text-align: center;
-      padding: 1rem 0;
-      margin-top: 2rem;
+      display: block;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+
+    .btn:hover, .vivenu-btn:hover {
+      background: var(--verde-oscuro);
+      color: white !important;
+    }
+
+    footer {
+      background: #0d0d0d;
+      color: #777;
+      text-align: center;
+      padding: 20px;
+      margin-top: 60px;
+      border-top: 1px solid #222;
     }
   </style>
-  <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+
+<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
 <body>
 
-  <header>
-    <nav>
-      <a href="#">Eventos</a>
-      <a href="#">Puntos de venta</a>
-      <a href="#">¿Cómo comprar?</a>
-      <a href="#">Preguntas frecuentes</a>
-      <a href="#">Vende con nosotros</a>
-    </nav>
-  </header>
+<header>
+  <div class="logo">DemoBoletos</div>
+  <nav>
+    <a href="#">Eventos</a>
+    <a href="#">Ayuda</a>
+    <a href="#">Mi cuenta</a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <h1>TUS BOLETOS</h1>
-    <p>COMPRA EN LÍENA</p></p>
-    <a class="btn" href="#">Ver más</a>
-  </section>
+<div class="hero">
+  <h1>Compra tus boletos para los mejores eventos</h1>
+</div>
 
-  <section class="events-section">
-    <h2>Eventos destacados</h2>
-    <div class="event-list">
-      <!-- Evento 1 -->
-      <div class="event-card">
-        <img src="trono.png" alt="Imagen">
-        <div class="event-content">
-          <h3>El trono de México</h3>
-          <p>Ciudad, Estado</p>
-          <p>Viernes 17 de Octubre 2025</p>
-          <a class="btn" href="https://prueba.tuticket.com.mx/event/el-mundo-de-fede-vigevani-copy-p8vyye?useEmbed=true">Ver evento</a>
-        </div>
+<section class="eventos">
+  <h2>Próximos Eventos</h2>
+
+  <div class="grid-eventos">
+
+    <!-- EVENTO 1 CON BOTÓN VIVENU -->
+    <div class="evento">
+      <img src="GOLF.jpg">
+      <div class="info">
+        <h3>Concierto Estelar</h3>
+        <p>📅 30 NOVIEMBRE 2025</p>
+        <p>📍 Auditorio Nacional</p>
       </div>
 
-      <!-- Evento 2 -->
-      <div class="event-card">
-        <img src="images.jpg" alt="Imagen Evento 2">
-        <div class="event-content">
-          <h3>Amanda Miguel</h3>
-          <p>Ciudad, Estado</p>
-          <p>Jueves 9 de Octubre 2025 - 15:30 hrs</p>
-          <p>Jueves 9 de Octubre 2025 - 18:30 hrs</p>
-          <a class="btn" href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-funciones-30wigt?recurrenceSelection=true">Ver evento</a>
-        </div>
-      </div>
-
-      <!-- Evento 3 -->
-      <div class="event-card">
-        <img src="con.jpg" alt="Imagen Evento 3">
-        <div class="event-content">
-          <h3>Concierto Galactico</h3>
-          <p>Ciudad, Estado</p>
-          <p>Viernes 31 de Octubre 2025</p>
-          <a class="btn" href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7?useEmbed=true">Ver evento</a>
-        </div>
-      </div>
+      <a
+        class="vivenu-btn"
+        href="https://tickets.payuticket.com/event/torneo-de-gol-je775y?useEmbed=true">
+        Comprar boletos
+      </a>
     </div>
-  </section>
 
-  <footer>
-    &copy; 2025 TuBoletos.mx | No hagas fila, compra en línea. Todos los derechos reservados.
-  </footer>
+    <!-- EVENTO 2 -->
+    <div class="evento">
+      <img src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&w=800&q=60">
+      <div class="info">
+        <h3>Gran Obra Teatral</h3>
+        <p>📅 5 Febrero 2026</p>
+        <p>📍 Teatro Central</p>
+      </div>
+
+      <button class="btn" onclick="window.location.href='https://TU-LINK-DE-VIVENU-2'">
+        Comprar boletos
+      </button>
+    </div>
+
+    <!-- EVENTO 3 -->
+    <div class="evento">
+      <img src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=800&q=60">
+      <div class="info">
+        <h3>Festival de Música</h3>
+        <p>📅 12 Marzo 2026</p>
+        <p>📍 Parque Central</p>
+      </div>
+
+      <button class="btn" onclick="window.location.href='https://TU-LINK-DE-VIVENU-3'">
+        Comprar boletos
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+<footer>
+  © 2025 DemoBoletos — Página demostrativa
+</footer>
 
 </body>
 </html>
-
