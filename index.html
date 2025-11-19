@@ -3,245 +3,347 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Demo Boletos - Estilo Dark Emerald</title>
-
+  <title>Conjunto Santander de Artes Escénicas</title>
   <style>
-    :root {
-      --fondo: #121212;
-      --tarjeta: #1E1E1E;
-      --texto: #EAEAEA;
-      --verde: #2ECC71;
-      --verde-oscuro: #25A25A;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: "Arial", sans-serif;
-      background: var(--fondo);
-      color: var(--texto);
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
     }
 
-    /* HEADER */
-    header {
-      background: var(--tarjeta);
-      color: var(--texto);
-      padding: 18px 30px;
+    /* Header Banner */
+    .header-banner {
+      background-color: #e53e3e;
+      color: white;
+      padding: 8px 20px;
+      font-size: 14px;
+      text-align: center;
+    }
+
+    /* Main Header */
+    .main-header {
+      background-color: white;
+      padding: 20px 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      border-bottom: 2px solid var(--verde);
+      justify-content: center;
+      padding: 0 20px;
     }
 
-    header .logo {
-      font-size: 1.5rem;
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo-icon {
+      width: 60px;
+      height: 60px;
+      background-color: #333;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo-text {
+      font-size: 28px;
       font-weight: bold;
-      color: var(--verde);
+      color: #333;
     }
 
-    header nav a {
-      color: var(--texto);
-      margin-left: 25px;
+    .logo-subtext {
+      font-size: 18px;
+      color: #666;
+      font-weight: normal;
+    }
+
+    /* Navigation */
+    .navigation {
+      background-color: white;
+      border-top: 1px solid #ddd;
+      padding: 0;
+    }
+
+    .nav-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 20px;
+    }
+
+    .nav-item {
+      color: #333;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      padding: 5px 0;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
     }
 
-    /* HERO */
-    .hero {
-      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-        url("https://images.unsplash.com/photo-1515165562835-c4c4f09f6a99?auto=format&fit=crop&w=1200&q=80")
-        center/cover;
-      height: 350px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .nav-item:hover {
+      color: #e53e3e;
+      border-bottom-color: #e53e3e;
+    }
+
+    /* Main Content */
+    .main-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .section-title {
       text-align: center;
-      padding: 0 20px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 30px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
-    .hero h1 {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: var(--verde);
-      text-shadow: 0 3px 10px rgba(0,0,0,0.8);
-    }
-
-    /* EVENTOS CONTENEDOR */
-    .eventos {
-      max-width: 1000px;
-      margin: 50px auto;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    .eventos h2 {
-      font-size: 2rem;
-      color: var(--verde);
-      margin-bottom: 25px;
-    }
-
-    .grid-eventos {
+    /* Filter Buttons */
+    .filter-buttons {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 10px;
+      margin-bottom: 40px;
       flex-wrap: wrap;
     }
 
-    /* TARJETAS */
-    .evento {
-      background: var(--tarjeta);
-      border-radius: 14px;
-      width: 280px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.4);
-      display: flex;
-      flex-direction: column;
-      transition: 0.3s;
-      border: 1px solid #1a1a1a;
-    }
-
-    .evento:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-    }
-
-    .evento img {
-      width: 100%;
-      height: 170px;
-      object-fit: cover;
-    }
-
-    .info {
-      padding: 15px;
-      flex-grow: 1;
-    }
-
-    .info h3 {
-      margin: 5px 0;
-      font-size: 1.25rem;
-      color: var(--verde);
-      font-weight: bold;
-    }
-
-    .info p {
-      margin: 6px 0;
-      font-size: 0.95rem;
-      color: #cccccc;
-    }
-
-    /* BOTÓN */
-    .btn, .vivenu-btn {
-      margin: 15px auto 20px;
-      width: 85%;
-      padding: 12px 20px;
-      background: var(--verde);
-      color: black !important;
+    .filter-btn {
+      padding: 10px 20px;
       border: none;
-      border-radius: 30px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 500;
       cursor: pointer;
-      font-size: 1rem;
+      transition: all 0.3s ease;
+      text-transform: capitalize;
+    }
+
+    .filter-btn.active { background-color: #666; color: white; }
+    .filter-btn.music { background-color: #ff9500; color: white; }
+    .filter-btn.theater { background-color: #00a86b; color: white; }
+    .filter-btn.dance { background-color: #8b1538; color: white; }
+    .filter-btn.children { background-color: #00bfff; color: white; }
+    .filter-btn.circus { background-color: #00ced1; color: white; }
+    .filter-btn.workshops { background-color: #dc143c; color: white; }
+    .filter-btn.conferences { background-color: #6a5acd; color: white; }
+    .filter-btn.festivals { background-color: #708090; color: white; }
+
+    .filter-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    /* Events Grid */
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .event-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .event-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+
+    .event-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .event-card:hover .event-image {
+      transform: scale(1.05);
+    }
+
+    .event-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(45deg, rgba(0,0,0,0.8), rgba(0,0,0,0.4));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .event-card:hover .event-overlay {
+      opacity: 1;
+    }
+
+    .event-title {
+      color: white;
+      font-size: 18px;
       font-weight: bold;
-      text-align: center;
-      display: block;
-      transition: 0.2s;
-      text-decoration: none;
-    }
-
-    .btn:hover, .vivenu-btn:hover {
-      background: var(--verde-oscuro);
-      color: white !important;
-    }
-
-    footer {
-      background: #0d0d0d;
-      color: #777;
       text-align: center;
       padding: 20px;
-      margin-top: 60px;
-      border-top: 1px solid #222;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .events-grid { grid-template-columns: 1fr; gap: 20px; }
+      .filter-btn { font-size: 12px; padding: 8px 15px; }
     }
   </style>
 
-<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+  <script src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
 <body>
 
-<header>
-  <div class="logo">DemoBoletos</div>
-  <nav>
-    <a href="#">Eventos</a>
-    <a href="#">Ayuda</a>
-    <a href="#">Mi cuenta</a>
-  </nav>
-</header>
-
-<div class="hero">
-  <h1>Compra tus boletos para los mejores eventos</h1>
-</div>
-
-<section class="eventos">
-  <h2>Próximos Eventos</h2>
-
-  <div class="grid-eventos">
-
-    <!-- EVENTO 1 CON BOTÓN VIVENU -->
-    <div class="evento">
-      <img src="GOLF.jpg">
-      <div class="info">
-        <h3>Concierto Estelar</h3>
-        <p>📅 30 NOVIEMBRE 2025</p>
-        <p>📍 Auditorio Nacional</p>
-      </div>
-
-      <a
-        class="vivenu-btn"
-        href="https://tickets.payuticket.com/event/torneo-de-gol-je775y?useEmbed=true">
-        Comprar boletos
-      </a>
-    </div>
-
-    <!-- EVENTO 2 -->
-    <div class="evento">
-      <img src="pixel.jpg">
-      <div class="info">
-        <h3>PIXEL</h3>
-        <p></p>
-        <p>📍 EXPLANADA</p>
-      </div>
-
-      <a
-        class="vivenu-btn"
-        href="https://prueba.tuticket.com.mx/event/museo-frida-s0spox?recurrenceSelection=tru">
-        Comprar boletos
-      </a>
-    </div>
-
-    <!-- EVENTO 3 -->
-    <div class="evento">
-      <img src="amanda.jpg">
-      <div class="info">
-        <h3>AMANDA MIGUEL</h3>
-        <p>📅 12 Marzo 2026</p>
-        <p>📍 METROPOLITANO</p>
-      </div>
-
-      <a
-        class="vivenu-btn"
-        href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-funciones-30wigt?recurrenceSelection=true">
-        Comprar boletos
-      </a>
-    </div>
-
+  <div class="header-banner">
+    <strong>Horario de taquilla:</strong> De lunes a viernes de 10:00 a 20:00 h, sábados de 11:00 a 19:00 h y domingos de 11:00 a 17:00 h, en taquillas no hay comisión extra por cargo por boleto.
   </div>
 
-</section>
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-content">
+      <div class="logo">
+        <div class="logo-icon">
+          <svg width="30" height="30" viewBox="0 0 24 24" fill="white">
+            <path d="M12 2L2 7v10c0 5.55 3.84 9.74 9 11 5.16-1.26 9-5.45 9-11V7l-10-5z"/>
+          </svg>
+        </div>
+        <div>
+          <div class="logo-text">Conjunto Santander</div>
+          <div class="logo-subtext">de Artes Escénicas</div>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<footer>
-  © 2025 DemoBoletos — Página demostrativa
-</footer>
+  <!-- Navigation -->
+  <nav class="navigation">
+    <div class="nav-content">
+      <a href="#" class="nav-item">Cartelera</a>
+      <a href="#" class="nav-item">El Recinto</a>
+      <a href="#" class="nav-item">Vinculación Educativa</a>
+      <a href="#" class="nav-item">Aliados Comerciales</a>
+      <a href="#" class="nav-item">Contacto</a>
+      <a href="#" class="nav-item">Solicitud de Espacio</a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <h1 class="section-title">Próximos Eventos</h1>
+
+    <div class="filter-buttons">
+      <button class="filter-btn active" data-filter="all">Todos</button>
+      <button class="filter-btn music" data-filter="music">Música</button>
+      <button class="filter-btn theater" data-filter="theater">Teatro</button>
+      <button class="filter-btn dance" data-filter="dance">Danza</button>
+      <button class="filter-btn children" data-filter="children">Infantil</button>
+      <button class="filter-btn circus" data-filter="circus">Circo</button>
+      <button class="filter-btn workshops" data-filter="workshops">Talleres y master class</button>
+      <button class="filter-btn conferences" data-filter="conferences">Congresos y conferencias</button>
+      <button class="filter-btn festivals" data-filter="festivals">Ferias y festivales</button>
+    </div>
+
+    <!-- Events -->
+    <div class="events-grid" id="eventsGrid">
+
+      <!-- Event 1 -->
+      <div class="event-card" data-category="workshops">
+        <a class="vivenu-btn yourStylingClass" href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true"></a>
+        <img src="amanda.jpg" class="event-image">
+        <div class="event-overlay">
+          <div class="event-title">AMANDA MIGUEL<br><small>COMPRA TUS BOLETOS</small><br><small>31-01-2026</small></div>
+        </div>
+      </div>
+
+      <!-- Event 2 -->
+      <div class="event-card" data-category="music">
+        <a class="vivenu-btn yourStylingClass" href="https://prueba.tuticket.com.mx/event/museo-frida-s0spox?recurrenceSelection=true"></a>
+        <img src="pixel.jpg" class="event-image">
+        <div class="event-overlay">
+          <div class="event-title">PIXEL<br><small>COMPRAR BOLETOS</small></div>
+        </div>
+      </div>
+
+      <!-- Event 3 -->
+      <div class="event-card" data-category="workshops">
+        <a class="vivenu-btn yourStylingClass" href="https://google.com"></a>
+        <img src="https://images.pexels.com/photos/34751894/pexels-photo-34751894.jpeg" class="event-image">
+        <div class="event-overlay">
+          <div class="event-title">MasterClass Puro Flow<br><small>Jazz & Hip Hop</small></div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+<script>
+/* ---------------------
+   FILTRO DE CATEGORÍAS
+--------------------- */
+const filterButtons = document.querySelectorAll('.filter-btn');
+const eventCards = document.querySelectorAll('.event-card');
+
+filterButtons.forEach(button => {
+  button.addEventListener('click', () => {
+    filterButtons.forEach(btn => btn.classList.remove('active'));
+    button.classList.add('active');
+
+    const filter = button.dataset.filter;
+
+    eventCards.forEach(card => {
+      card.style.display = (filter === "all" || card.dataset.category === filter)
+        ? "block"
+        : "none";
+    });
+  });
+});
+
+/* ---------------------
+   HACER TODA LA TARJETA CLICKEABLE
+--------------------- */
+document.querySelectorAll('.event-card').forEach(card => {
+  card.addEventListener('click', () => {
+    const link = card.querySelector('a');
+    if (link) link.click();
+  });
+});
+
+// Evitar doble click cuando sí presionan el enlace directamente
+document.querySelectorAll('.event-card a').forEach(a => {
+  a.addEventListener('click', e => e.stopPropagation());
+});
+</script>
 
 </body>
 </html>
-
-
-
-
