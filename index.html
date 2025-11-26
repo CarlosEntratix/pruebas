@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Boletea - Tickets</title>
+  <title>TuBoleta.com.do - Venta de Boletos</title>
   <style>
     * {
       margin: 0;
@@ -18,14 +18,20 @@
 
     /* Header */
     .header {
-      background-color: white;
+      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+      color: white;
       padding: 15px 0;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       position: relative;
-      z-index: 100;
     }
 
-    .header-container {
+    .contact-bar {
+      background-color: rgba(0, 0, 0, 0.2);
+      text-align: center;
+      padding: 8px 0;
+      font-size: 12px;
+    }
+
+    .nav-container {
       max-width: 1200px;
       margin: 0 auto;
       display: flex;
@@ -35,52 +41,80 @@
     }
 
     .logo {
-      font-size: 28px;
+      font-size: 24px;
       font-weight: bold;
-      color: #dc2626;
-    }
-
-    .nav {
       display: flex;
-      gap: 30px;
       align-items: center;
     }
 
-    .nav a {
+    .logo::before {
+      content: "🎫";
+      margin-right: 10px;
+      font-size: 28px;
+    }
+
+    .nav-menu {
+      display: flex;
+      list-style: none;
+      gap: 30px;
+    }
+
+    .nav-menu a {
+      color: white;
       text-decoration: none;
-      color: #333;
       font-weight: 500;
-      transition: color 0.3s;
+      transition: opacity 0.3s;
     }
 
-    .nav a:hover {
-      color: #dc2626;
+    .nav-menu a:hover {
+      opacity: 0.8;
     }
 
-    .login-btn {
-      background-color: #dc2626;
+    .create-event-btn {
+      background-color: transparent;
+      border: 2px solid white;
       color: white;
       padding: 10px 20px;
-      border: none;
       border-radius: 5px;
+      text-decoration: none;
       font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s;
+      transition: all 0.3s;
     }
 
-    .login-btn:hover {
-      background-color: #b91c1c;
+    .create-event-btn:hover {
+      background-color: white;
+      color: #2a5298;
     }
 
     /* Hero Section */
     .hero {
       position: relative;
-      height: 500px;
-      background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+      height: 400px;
+      background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffa8a8);
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden;
+    }
+
+    .hero-content {
+      text-align: center;
+      color: white;
+      z-index: 2;
+      position: relative;
+    }
+
+    .hero-title {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-subtitle {
+      font-size: 24px;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
     }
 
     .hero-background {
@@ -89,54 +123,39 @@
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('https://images.pexels.com/photos/811838/pexels-photo-811838.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
+      background-image: url('https://images.pexels.com/photos/2114365/pexels-photo-2114365.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
       background-size: cover;
       background-position: center;
       opacity: 0.3;
     }
 
-    .hero-content {
-      position: relative;
-      text-align: center;
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.2);
+      border: none;
       color: white;
-      z-index: 10;
-    }
-
-    .hero-title {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-    }
-
-    .hero-subtitle {
       font-size: 24px;
-      margin-bottom: 30px;
-      opacity: 0.9;
-    }
-
-    /* Unified Button Style */
-    .buy-tickets-btn {
-      display: inline-block;
-      width: 220px;
-      background-color: #dc2626;
-      color: white;
-      padding: 12px 0;
-      text-align: center;
-      border-radius: 25px;
-      font-weight: bold;
-      text-decoration: none;
+      padding: 15px 20px;
       cursor: pointer;
-      transition: background-color 0.3s, transform 0.3s;
+      border-radius: 50%;
+      transition: background-color 0.3s;
     }
 
-    .buy-tickets-btn:hover {
-      background-color: #b91c1c;
-      transform: translateY(-2px);
+    .carousel-nav:hover {
+      background-color: rgba(255, 255, 255, 0.4);
     }
 
-    /* Carousel indicators */
-    .carousel-indicators {
+    .carousel-prev {
+      left: 20px;
+    }
+
+    .carousel-next {
+      right: 20px;
+    }
+
+    .carousel-dots {
       position: absolute;
       bottom: 20px;
       left: 50%;
@@ -145,89 +164,39 @@
       gap: 10px;
     }
 
-    .indicator {
+    .dot {
       width: 12px;
       height: 12px;
       border-radius: 50%;
-      background-color: rgba(255,255,255,0.5);
+      background-color: rgba(255, 255, 255, 0.5);
       cursor: pointer;
       transition: background-color 0.3s;
     }
 
-    .indicator.active {
+    .dot.active {
       background-color: white;
-    }
-
-    /* Search Section */
-    .search-section {
-      padding: 40px 0;
-      background-color: white;
-    }
-
-    .search-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .search-box {
-      position: relative;
-      max-width: 600px;
-      margin: 0 auto;
-    }
-
-    .search-input {
-      width: 100%;
-      padding: 15px 50px 15px 20px;
-      border: 2px solid #e5e5e5;
-      border-radius: 25px;
-      font-size: 16px;
-      outline: none;
-      transition: border-color 0.3s;
-    }
-
-    .search-input:focus {
-      border-color: #dc2626;
-    }
-
-    .search-icon {
-      position: absolute;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: #999;
     }
 
     /* Events Section */
     .events-section {
-      padding: 60px 0;
-      background-color: #f9f9f9;
-    }
-
-    .events-container {
       max-width: 1200px;
-      margin: 0 auto;
+      margin: 50px auto;
       padding: 0 20px;
     }
 
     .section-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-size: 28px;
-      font-weight: bold;
-      color: #dc2626;
-      margin-bottom: 40px;
-    }
-
-    .star-icon {
-      color: #fbbf24;
+      text-align: center;
       font-size: 32px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
 
     .events-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 30px;
     }
 
@@ -235,13 +204,13 @@
       background: white;
       border-radius: 15px;
       overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .event-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
     }
 
     .event-image {
@@ -252,57 +221,62 @@
 
     .event-info {
       padding: 20px;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      align-items: center;
+    }
+
+    .event-venue {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 5px;
     }
 
     .event-title {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
       color: #333;
-      margin-bottom: 5px;
-      text-align: center;
+      margin-bottom: 10px;
     }
 
-    .event-location, .event-date {
-      color: #666;
+    .event-date {
+      color: #888;
       font-size: 14px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      margin-bottom: 15px;
+    }
+
+    /* BOTÓN MEJORADO */
+    .buy-btn,
+    .buy-tickets-btn {
+      display: block;
       text-align: center;
-    }
-
-    /* WhatsApp Button */
-    .whatsapp-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      width: 60px;
-      height: 60px;
-      background-color: #25d366;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: linear-gradient(135deg, #4e8cff 0%, #3b5bdb 100%);
       color: white;
-      font-size: 30px;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 30px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
       text-decoration: none;
-      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-      transition: transform 0.3s;
-      z-index: 1000;
+      font-size: 15px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    .whatsapp-btn:hover {
-      transform: scale(1.1);
+    .buy-btn:hover,
+    .buy-tickets-btn:hover {
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #3b73ff 0%, #2e4ac7 100%);
     }
 
     /* Responsive */
     @media (max-width: 768px) {
-      .nav {
-        display: none;
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+
+      .nav-menu {
+        gap: 20px;
       }
 
       .hero-title {
@@ -317,148 +291,89 @@
         grid-template-columns: 1fr;
       }
 
-      .header-container {
-        padding: 0 15px;
+      .carousel-nav {
+        display: none;
       }
     }
   </style>
   <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
+
 <body>
+
   <!-- Header -->
   <header class="header">
-    <div class="header-container">
-      <div class="logo">Boletea</div>
-      <nav class="nav">
-        <a href="#inicio">Inicio</a>
-        <a href="#quienes-somos">Quiénes Somos</a>
-        <a href="#terminos">Términos y Condiciones</a>
-        <a href="#privacidad">Aviso de Privacidad</a>
-        <a href="#ticket-assist">Ticket Assist</a>
-        <a href="#centros">Centros de Ventas</a>
-        <button class="login-btn">Iniciar sesión</button>
-      </nav>
+    <div class="contact-bar">
+      📞 Call Center: (+1) 809 732 9298 ext 504 o 505 - Horario atención: Lun - Vier 9:00 am - 8:00 pm / Sáb - Dom: 10:00 am a 2:00 pm
     </div>
+    <nav class="nav-container">
+      <div class="logo">tuboleta.com.do</div>
+      <ul class="nav-menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#eventos">Próximos Eventos</a></li>
+        <li><a href="#cuenta">Mi Cuenta</a></li>
+        <li><a href="#contacto">Contáctanos</a></li>
+      </ul>
+      <a href="#crear" class="create-event-btn">Crea tu evento</a>
+    </nav>
   </header>
 
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-background"></div>
     <div class="hero-content">
-      <h1 class="hero-title">BETTY SHINE</h1>
-      <p class="hero-subtitle">Domingo 21 de Diciembre 2025</p>
-      <a href="https://tusitio.com/comprar-boletos" class="buy-tickets-btn">Comprar Boletos</a>
+      <h1 class="hero-title">VIVE LA EXPERIENCIA</h1>
+      <p class="hero-subtitle">Los mejores eventos están aquí</p>
     </div>
-    <div class="carousel-indicators">
-      <div class="indicator"></div>
-      <div class="indicator"></div>
-      <div class="indicator active"></div>
-      <div class="indicator"></div>
-      <div class="indicator"></div>
-      <div class="indicator"></div>
-      <div class="indicator"></div>
-    </div>
-  </section>
-
-  <!-- Search Section -->
-  <section class="search-section">
-    <div class="search-container">
-      <div class="search-box">
-        <input type="text" class="search-input" placeholder="¿Estás buscando un evento?">
-        <div class="search-icon">🔍</div>
-      </div>
+    <button class="carousel-nav carousel-prev">‹</button>
+    <button class="carousel-nav carousel-next">›</button>
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
     </div>
   </section>
 
   <!-- Events Section -->
-  <section class="events-section">
-    <div class="events-container">
-      <h2 class="section-title">
-        <span class="star-icon">⭐</span>
-        Eventos destacados
-      </h2>
+  <section class="events-section" id="eventos">
+    <h2 class="section-title">Próximos Eventos</h2>
+
+    <div class="events-grid">
       
-      <div class="events-grid">
-        <!-- Event 1 -->
-        <div class="event-card">
-          <img src="pixel.jpg" alt="Ricardo Montaner" class="event-image">
-          <div class="event-info">
-            <h3 class="event-title">PIXEL UNIVERSE</h3>
-            <div class="event-location">📍 PUUEBLA, PUEBLA.</div>
-            <div class="event-date">📅 6-DIC-2026</div>
-            <a href="https://prueba.tuticket.com.mx/event/pixel-universe-rhq70e?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
-          </div>
+      <article class="event-card">
+        <img src="pixel.jpg" alt="Ednita Nazario Concert" class="event-image">
+        <div class="event-info">
+          <p class="event-venue">📍 PUUEBLA, PUEBLA</p>
+          <h3 class="event-title">PIXEL UNIVERSE</h3>
+          <p class="event-date">📅 6-DIC-2026</p>
+          <a href="https://prueba.tuticket.com.mx/event/pixel-universe-rhq70e?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
         </div>
+      </article>
 
-        <!-- Event 2 -->
-        <div class="event-card">
-          <img src="amanda.jpg" alt="Eden Muñoz" class="event-image">
-          <div class="event-info">
-            <h3 class="event-title">AMANDA MIGUEL</h3>
-            <div class="event-location">📍 PUEBLA, PUEBLA.</div>
-            <div class="event-date">📅 31-ENE-2026</div>
-            <a href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
-          </div>
+      <article class="event-card">
+        <img src="amanda.jpg" alt="Basketball World Cup" class="event-image">
+        <div class="event-info">
+          <p class="event-venue">📍 PUEBLA, PUEBLA.</p>
+          <h3 class="event-title">AMANDA MIGUEL</h3>
+          <p class="event-date">📅 31-ENE-2026</p>
+          <a href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
         </div>
+      </article>
 
-        <!-- Event 3 -->
-        <div class="event-card">
-          <img src="lakers.jpg" alt="Los Parras" class="event-image">
-          <div class="event-info">
-            <h3 class="event-title">Lakers vs Warriors</h3>
-            <div class="event-location">📍 PUEBLA, PUEBLA.</div>
-            <div class="event-date">📅 28-11-2025</div>
-            <a href="https://prueba.tuticket.com.mx/event/lakers-vs-warriors-sai93h?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
-          </div>
+      <article class="event-card">
+        <img src="lakers.jpg" alt="Raulin Rodriguez Concert" class="event-image">
+        <div class="event-info">
+          <p class="event-venue">📍 PUEBLA, PUEBLA</p>
+          <h3 class="event-title">Lakers vs Warriors</h3>
+          <p class="event-date">📅 28-11-2025</p>
+          <a href="https://prueba.tuticket.com.mx/event/lakers-vs-warriors-sai93h?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
         </div>
-      </div>
+      </article>
+
     </div>
   </section>
 
-  <!-- WhatsApp Button -->
-  <a href="https://wa.me/1234567890" class="whatsapp-btn" target="_blank">💬</a>
-
-  <script>
-    // Simple carousel functionality
-    const indicators = document.querySelectorAll('.indicator');
-    let currentSlide = 2; // Start with the active one
-
-    indicators.forEach((indicator, index) => {
-      indicator.addEventListener('click', () => {
-        indicators[currentSlide].classList.remove('active');
-        currentSlide = index;
-        indicators[currentSlide].classList.add('active');
-      });
-    });
-
-    // Auto-rotate carousel
-    setInterval(() => {
-      indicators[currentSlide].classList.remove('active');
-      currentSlide = (currentSlide + 1) % indicators.length;
-      indicators[currentSlide].classList.add('active');
-    }, 5000);
-
-    // Search functionality
-    const searchInput = document.querySelector('.search-input');
-    searchInput.addEventListener('focus', () => {
-      searchInput.style.borderColor = '#dc2626';
-    });
-
-    searchInput.addEventListener('blur', () => {
-      searchInput.style.borderColor = '#e5e5e5';
-    });
-
-    // Button interactions
-    document.querySelectorAll('.buy-tickets-btn, .login-btn').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        // Si quieres que vaya a un enlace real, comenta la línea siguiente
-        // e.preventDefault();
-        // alert('Funcionalidad de compra próximamente disponible');
-      });
-    });
-  </script>
 </body>
 </html>
-
-
-
