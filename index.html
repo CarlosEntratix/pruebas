@@ -1,379 +1,191 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TuBoleta.com.do - Venta de Boletos</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Villa Flamingos - Eventos</title>
 
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f5f5f5;
-    }
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f7d0d8;
+        }
 
-    /* Header */
-    .header {
-      background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
-      color: white;
-      padding: 15px 0;
-      position: relative;
-    }
+        /* NAV */
+        .navbar {
+            background: #1b2327;
+            padding: 15px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: white;
+        }
 
-    .contact-bar {
-      background-color: rgba(0, 0, 0, 0.2);
-      text-align: center;
-      padding: 8px 0;
-      font-size: 12px;
-    }
+        .navbar a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-    .nav-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 20px;
-    }
+        /* FORM SECTION */
+        .hero {
+            background: url('https://via.placeholder.com/1600x500') center/cover no-repeat;
+            padding: 60px 20px;
+            color: white;
+            text-align: center;
+        }
 
-    .logo {
-      font-size: 24px;
-      font-weight: bold;
-      display: flex;
-      align-items: center;
-    }
+        .form-box {
+            background: #e92d74;
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
 
-    .logo::before {
-      content: "🎫";
-      margin-right: 10px;
-      font-size: 28px;
-    }
+        .form-box input {
+            padding: 12px;
+            width: 250px;
+            border-radius: 5px;
+            border: none;
+        }
 
-    .nav-menu {
-      display: flex;
-      list-style: none;
-      gap: 30px;
-    }
+        .btn {
+            background: #cc235e;
+            padding: 12px 25px;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            border-radius: 5px;
+        }
 
-    .nav-menu a {
-      color: white;
-      text-decoration: none;
-      font-weight: 500;
-      transition: opacity 0.3s;
-    }
+        /* EVENTS */
+        .events-section {
+            padding: 50px;
+            text-align: center;
+        }
 
-    .nav-menu a:hover {
-      opacity: 0.8;
-    }
+        .events-title {
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
 
-    .create-event-btn {
-      background-color: transparent;
-      border: 2px solid white;
-      color: white;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
+        .event-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px auto;
+            display: flex;
+            gap: 20px;
+            max-width: 900px;
+        }
 
-    .create-event-btn:hover {
-      background-color: white;
-      color: #2a5298;
-    }
+        .event-card img {
+            width: 200px;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
 
-    /* Hero Section */
-    .hero {
-      position: relative;
-      height: 400px;
-      background: linear-gradient(45deg, #ff6b6b, #ff8e8e, #ffa8a8);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden;
-    }
+        .event-info {
+            text-align: left;
+        }
 
-    .hero-content {
-      text-align: center;
-      color: white;
-      z-index: 2;
-      position: relative;
-    }
+        .more-info-btn, .vivenu-btn {
+            background: #e92d74;
+            padding: 10px 18px;
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 15px;
+            border-radius: 5px;
+        }
+    </style>
 
-    .hero-title {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 20px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero-subtitle {
-      font-size: 24px;
-      margin-bottom: 30px;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-    }
-
-    .hero-background {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://images.pexels.com/photos/2114365/pexels-photo-2114365.jpeg?auto=compress&cs=tinysrgb&h=650&w=940');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.3;
-    }
-
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(255, 255, 255, 0.2);
-      border: none;
-      color: white;
-      font-size: 24px;
-      padding: 15px 20px;
-      cursor: pointer;
-      border-radius: 50%;
-      transition: background-color 0.3s;
-    }
-
-    .carousel-nav:hover {
-      background-color: rgba(255, 255, 255, 0.4);
-    }
-
-    .carousel-prev {
-      left: 20px;
-    }
-
-    .carousel-next {
-      right: 20px;
-    }
-
-    .carousel-dots {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 10px;
-    }
-
-    .dot {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.5);
-      cursor: pointer;
-      transition: background-color 0.3s;
-    }
-
-    .dot.active {
-      background-color: white;
-    }
-
-    /* Events Section */
-    .events-section {
-      max-width: 1200px;
-      margin: 50px auto;
-      padding: 0 20px;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 32px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 40px;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 30px;
-    }
-
-    .event-card {
-      background: white;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-
-    .event-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-    }
-
-    .event-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-    }
-
-    .event-info {
-      padding: 20px;
-    }
-
-    .event-venue {
-      color: #666;
-      font-size: 14px;
-      margin-bottom: 5px;
-    }
-
-    .event-title {
-      font-size: 18px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    .event-date {
-      color: #888;
-      font-size: 14px;
-      margin-bottom: 15px;
-    }
-
-    /* BOTÓN MEJORADO */
-    .buy-btn,
-    .buy-tickets-btn {
-      display: block;
-      text-align: center;
-      background: linear-gradient(135deg, #4e8cff 0%, #3b5bdb 100%);
-      color: white;
-      border: none;
-      padding: 12px 25px;
-      border-radius: 30px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      width: 100%;
-      text-decoration: none;
-      font-size: 15px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .buy-btn:hover,
-    .buy-tickets-btn:hover {
-      transform: translateY(-3px) scale(1.03);
-      box-shadow: 0 8px 18px rgba(0,0,0,0.2);
-      background: linear-gradient(135deg, #3b73ff 0%, #2e4ac7 100%);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .nav-container {
-        flex-direction: column;
-        gap: 15px;
-      }
-
-      .nav-menu {
-        gap: 20px;
-      }
-
-      .hero-title {
-        font-size: 32px;
-      }
-
-      .hero-subtitle {
-        font-size: 18px;
-      }
-
-      .events-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .carousel-nav {
-        display: none;
-      }
-    }
-  </style>
-  <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+    <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header class="header">
-    <div class="contact-bar">
-      📞 Call Center: (+1) 809 732 9298 ext 504 o 505 - Horario atención: Lun - Vier 9:00 am - 8:00 pm / Sáb - Dom: 10:00 am a 2:00 pm
-    </div>
-    <nav class="nav-container">
-      <div class="logo">tuboleta.com.do</div>
-      <ul class="nav-menu">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#eventos">Próximos Eventos</a></li>
-        <li><a href="#cuenta">Mi Cuenta</a></li>
-        <li><a href="#contacto">Contáctanos</a></li>
-      </ul>
-      <a href="#crear" class="create-event-btn">Crea tu evento</a>
-    </nav>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-background"></div>
-    <div class="hero-content">
-      <h1 class="hero-title">VIVE LA EXPERIENCIA</h1>
-      <p class="hero-subtitle">Los mejores eventos están aquí</p>
-    </div>
-    <button class="carousel-nav carousel-prev">‹</button>
-    <button class="carousel-nav carousel-next">›</button>
-    <div class="carousel-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-  </section>
-
-  <!-- Events Section -->
-  <section class="events-section" id="eventos">
-    <h2 class="section-title">Próximos Eventos</h2>
-
-    <div class="events-grid">
-      
-      <article class="event-card">
-        <img src="pixel.jpg" alt="Ednita Nazario Concert" class="event-image">
-        <div class="event-info">
-          <p class="event-venue">📍 PUUEBLA, PUEBLA</p>
-          <h3 class="event-title">PIXEL UNIVERSE</h3>
-          <p class="event-date">📅 6-DIC-2026</p>
-          <a href="https://prueba.tuticket.com.mx/event/pixel-universe-rhq70e?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
+    <!-- NAVBAR -->
+    <div class="navbar">
+        <div class="logo"><b>Villa Flamingos</b></div>
+        <div class="links">
+            <a href="#">Página de Inicio</a>
+            <a href="#">Eventos</a>
+            <a href="#">Sobre Nosotros</a>
+            <a href="#">Servicios</a>
+            <a href="#">Contacto</a>
         </div>
-      </article>
+    </div>
 
-      <article class="event-card">
-        <img src="amanda.jpg" alt="Basketball World Cup" class="event-image">
-        <div class="event-info">
-          <p class="event-venue">📍 PUEBLA, PUEBLA.</p>
-          <h3 class="event-title">AMANDA MIGUEL</h3>
-          <p class="event-date">📅 31-ENE-2026</p>
-          <a href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
-        </div>
-      </article>
+    <!-- HERO -->
+    <div class="hero">
+        <h2>Con más de 45 años de experiencia</h2>
 
-      <article class="event-card">
-        <img src="lakers.jpg" alt="Raulin Rodriguez Concert" class="event-image">
-        <div class="event-info">
-          <p class="event-venue">📍 PUEBLA, PUEBLA</p>
-          <h3 class="event-title">Lakers vs Warriors</h3>
-          <p class="event-date">📅 28-11-2025</p>
-          <a href="https://prueba.tuticket.com.mx/event/lakers-vs-warriors-sai93h?useEmbed=true" class="buy-tickets-btn">Comprar Boletos</a>
+        <div class="form-box">
+            <input type="text" placeholder="Nombre">
+            <input type="text" placeholder="Teléfono">
+            <input type="email" placeholder="Correo electrónico">
+            <button class="btn">Contacto</button>
         </div>
-      </article>
+    </div>
+
+    <!-- EVENTS SECTION -->
+    <div class="events-section">
+        <h2 class="events-title">EVENTOS</h2>
+
+        <!-- EVENTO 1 -->
+        <div class="event-card">
+            <img src="pixel.jpg" alt="Evento 1">
+            <div class="event-info">
+                <h3>FUNCIONES PIXEL</h3>
+                <p>22/12/2025</p>
+                <p>Puebla, Puebla.</p>
+                <p>Show inmersivo y recreativo.</p>
+                <a class="vivenu-btn yourStylingClass" 
+                   href="https://prueba.tuticket.com.mx/event/pixel-universe-3ln9j1?useEmbed=true">
+                   Comprar ticket
+                </a>
+            </div>
+        </div>
+
+        <!-- EVENTO 2 -->
+        <div class="event-card">
+            <img src="con.jpg" alt="Evento 2">
+            <div class="event-info">
+                <h3>Conferencia</h3>
+                <p>14/01/2026</p>
+                <p>Villa Flamingos, CDMX</p>
+                <p></p>
+                <a class="vivenu-btn yourStylingClass" 
+                   href="https://prueba.tuticket.com.mx/event/conferencia-sd57ma?useEmbed=true">
+                   Comprar ticket
+                </a>
+            </div>
+        </div>
+
+        <!-- EVENTO 3 -->
+        <div class="event-card">
+            <img src="concierto.jpg" alt="Evento 3">
+            <div class="event-info">
+                <h3>Concierto Galáctico</h3>
+                <p>30/01/2026</p>
+                <p>Salón Flamingos, CDMX</p>
+                <p>Una noche vibrante celebrando la música de Star Wars.</p>
+                <a class="vivenu-btn yourStylingClass" 
+                   href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7?useEmbed=true">
+                   Comprar ticket
+                </a>
+            </div>
+        </div>
 
     </div>
-  </section>
 
 </body>
 </html>
