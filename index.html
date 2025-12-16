@@ -2,191 +2,220 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <title>Demo Parque Acuático</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Villa Flamingos - Eventos</title>
 
     <style>
-        body {
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f7d0d8;
+            padding: 0;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
-        /* NAV */
-        .navbar {
-            background: #1b2327;
+        body {
+            background: #f5f5f5;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: #2c3e50;
+            color: #fff;
             padding: 15px 40px;
             display: flex;
-            align-items: center;
             justify-content: space-between;
-            color: white;
+            align-items: center;
         }
 
-        .navbar a {
-            color: white;
-            margin: 0 15px;
+        header .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav a {
+            color: #fff;
             text-decoration: none;
-            font-weight: bold;
+            margin-left: 20px;
+            font-size: 14px;
         }
 
-        /* FORM SECTION */
+        nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* HERO */
         .hero {
-            background: url('https://via.placeholder.com/1600x500') center/cover no-repeat;
-            padding: 60px 20px;
-            color: white;
-            text-align: center;
-        }
-
-        .form-box {
-            background: #e92d74;
-            padding: 20px;
-            border-radius: 10px;
+            background: #f4d43f;
+            height: 420px;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .form-box input {
-            padding: 12px;
-            width: 250px;
-            border-radius: 5px;
-            border: none;
-        }
-
-        .btn {
-            background: #cc235e;
-            padding: 12px 25px;
-            color: white;
-            border: none;
-            cursor: pointer;
-            font-weight: bold;
-            border-radius: 5px;
-        }
-
-        /* EVENTS */
-        .events-section {
-            padding: 50px;
             text-align: center;
-        }
-
-        .events-title {
-            font-size: 30px;
-            margin-bottom: 20px;
-        }
-
-        .event-card {
-            background: white;
-            border-radius: 10px;
             padding: 20px;
-            margin: 30px auto;
-            display: flex;
-            gap: 20px;
-            max-width: 900px;
         }
 
-        .event-card img {
-            width: 200px;
-            height: 260px;
-            object-fit: cover;
-            border-radius: 10px;
+        .hero-content {
+            max-width: 700px;
         }
 
-        .event-info {
-            text-align: left;
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
         }
 
-        .more-info-btn, .vivenu-btn {
-            background: #e92d74;
-            padding: 10px 18px;
-            color: white;
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 25px;
+        }
+
+        .btn-comprar {
+            background: #e74c3c;
+            color: #fff;
+            padding: 15px 30px;
+            border: none;
+            font-size: 18px;
+            border-radius: 6px;
+            cursor: pointer;
             text-decoration: none;
             display: inline-block;
-            margin-top: 15px;
+        }
+
+        .btn-comprar:hover {
+            background: #c0392b;
+        }
+
+        /* PRECIOS */
+        .precios {
+            padding: 50px 40px;
+            background: #fff;
+        }
+
+        .precios h2 {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            border-radius: 8px;
+            padding: 25px;
+            color: #fff;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card h3 {
+            font-size: 20px;
+        }
+
+        .card .precio {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .card p {
+            font-size: 14px;
+        }
+
+        .gratis { background: #2ecc71; }
+        .chico { background: #f39c12; }
+        .grande { background: #3498db; }
+        .insen { background: #e74c3c; }
+
+        .card button {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 10px;
+            color: #fff;
             border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background: rgba(255,255,255,0.35);
+        }
+
+        /* FOOTER */
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 32px;
+            }
         }
     </style>
-
     <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
-
 <body>
 
-    <!-- NAVBAR -->
-    <div class="navbar">
-        <div class="logo"><b>Villa Flamingos</b></div>
-        <div class="links">
-            <a href="#">Página de Inicio</a>
-            <a href="#">Eventos</a>
-            <a href="#">Sobre Nosotros</a>
-            <a href="#">Servicios</a>
-            <a href="#">Contacto</a>
+<header>
+    <div class="logo">Parque Acuático (Demo)</div>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Atracciones</a>
+        <a href="#">Servicios</a>
+        <a href="#">Contacto</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Diversión para toda la familia</h1>
+        <p>Ven y disfruta de albercas, toboganes y áreas recreativas.</p>
+        <a href="https://tickets.payuticket.com/event/parque-acuatico-ye8tv9?recurrenceSelection=true" class="btn-comprar">🎟️ Comprar entradas</a>
+    </div>
+</section>
+
+<section class="precios" id="precios">
+    <h2>Conoce nuestros precios</h2>
+
+    <div class="cards">
+        <div class="card gratis">
+            <h3>Gratis</h3>
+            <div class="precio">$0</div>
+            <p>Menores de 90 cm de estatura.</p>
+        </div>
+
+        <div class="card chico">
+            <h3>Boleto Chico</h3>
+            <div class="precio">$130</div>
+            <p>De 90 cm a 140 cm.</p>
+        </div>
+
+        <div class="card grande">
+            <h3>Boleto Grande</h3>
+            <div class="precio">$240</div>
+            <p>Mayores de 140 cm.</p>
+        </div>
+
+        <div class="card insen">
+            <h3>INAPAM / INSEN</h3>
+            <div class="precio">$130</div>
+            <p>Presentando credencial.</p>
         </div>
     </div>
+</section>
 
-    <!-- HERO -->
-    <div class="hero">
-        <h2>Con más de 45 años de experiencia</h2>
-
-        <div class="form-box">
-            <input type="text" placeholder="Nombre">
-            <input type="text" placeholder="Teléfono">
-            <input type="email" placeholder="Correo electrónico">
-            <button class="btn">Contacto</button>
-        </div>
-    </div>
-
-    <!-- EVENTS SECTION -->
-    <div class="events-section">
-        <h2 class="events-title">EVENTOS</h2>
-
-        <!-- EVENTO 1 -->
-        <div class="event-card">
-            <img src="pixel.jpg" alt="Evento 1">
-            <div class="event-info">
-                <h3>FUNCIONES PIXEL</h3>
-                <p>22/12/2025</p>
-                <p>Puebla, Puebla.</p>
-                <p>Show inmersivo y recreativo.</p>
-                <a class="vivenu-btn yourStylingClass" 
-                   href="https://prueba.tuticket.com.mx/event/pixel-universe-3ln9j1?useEmbed=true">
-                   Comprar ticket
-                </a>
-            </div>
-        </div>
-
-        <!-- EVENTO 2 -->
-        <div class="event-card">
-            <img src="amanda.jpg" alt="Evento 2">
-            <div class="event-info">
-                <h3>Amanda Miguel</h3>
-                <p>31/01/2026</p>
-                <p>Villa Flamingos, CDMX</p>
-                <p></p>
-                <a class="vivenu-btn yourStylingClass" 
-                   href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true">
-                   Comprar ticket
-                </a>
-            </div>
-        </div>
-
-        <!-- EVENTO 3 -->
-        <div class="event-card">
-            <img src="concierto.jpg" alt="Evento 3">
-            <div class="event-info">
-                <h3>Concierto Galáctico</h3>
-                <p>30/01/2026</p>
-                <p>Salón Flamingos, CDMX</p>
-                <p>Una noche vibrante celebrando la música de Star Wars.</p>
-                <a class="vivenu-btn yourStylingClass" 
-                   href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7?useEmbed=true">
-                   Comprar ticket
-                </a>
-            </div>
-        </div>
-
-    </div>
+<footer>
+    © 2025 Parque Acuático - Página demostrativa
+</footer>
 
 </body>
 </html>
-
