@@ -2,25 +2,19 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Demo Parque Acuático</title>
+    <title>startickets.mx - Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
         body {
-            background: #f5f5f5;
-            color: #333;
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f5f5f5;
         }
 
         /* HEADER */
         header {
-            background: #2c3e50;
+            background-color: #000;
             color: #fff;
             padding: 15px 40px;
             display: flex;
@@ -28,194 +22,187 @@
             align-items: center;
         }
 
-        header .logo {
+        header h1 {
             font-size: 22px;
-            font-weight: bold;
+            margin: 0;
         }
 
-        nav a {
+        header nav a {
             color: #fff;
-            text-decoration: none;
             margin-left: 20px;
+            text-decoration: none;
             font-size: 14px;
-        }
-
-        nav a:hover {
-            text-decoration: underline;
         }
 
         /* HERO */
         .hero {
-            background: #f4d43f;
-            height: 420px;
+            background: linear-gradient(
+                rgba(0,0,0,0.6),
+                rgba(0,0,0,0.6)
+            ), url("https://images.unsplash.com/photo-1518972559570-7cc1309f3229");
+            background-size: cover;
+            background-position: center;
+            height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            padding: 20px;
+            color: #fff;
         }
 
-        .hero-content {
-            max-width: 700px;
-        }
-
-        .hero h1 {
+        .hero h2 {
             font-size: 48px;
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            margin-bottom: 25px;
-        }
-
-        .btn-comprar {
-            background: #e74c3c;
-            color: #fff;
-            padding: 15px 30px;
-            border: none;
-            font-size: 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-comprar:hover {
-            background: #c0392b;
-        }
-
-        /* PRECIOS */
-        .precios {
-            padding: 50px 40px;
-            background: #fff;
-        }
-
-        .precios h2 {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            max-width: 1100px;
-            margin: auto;
-        }
-
-        .card {
-            border-radius: 8px;
-            padding: 25px;
-            color: #fff;
-            min-height: 180px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-
-        .card h3 {
-            font-size: 20px;
-        }
-
-        .card .precio {
-            font-size: 28px;
             font-weight: bold;
         }
 
-        .card p {
+        /* SEARCH */
+        .search-container {
+            margin: 30px auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 15px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        /* EVENTS */
+        .events {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .events h3 {
+            margin-bottom: 20px;
+        }
+
+        .event-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .event-card {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .event-card .content {
+            padding: 15px;
+        }
+
+        .event-card h4 {
+            margin: 0 0 10px;
+        }
+
+        .event-card p {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .event-card button {
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
             font-size: 14px;
         }
 
-        .gratis { background: #2ecc71; }
-        .chico { background: #f39c12; }
-        .grande { background: #3498db; }
-        .insen { background: #e74c3c; }
-
-        .card button {
-            background: rgba(255,255,255,0.2);
-            border: none;
-            padding: 10px;
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .card button:hover {
-            background: rgba(255,255,255,0.35);
+        .event-card button:hover {
+            background-color: #333;
         }
 
         /* FOOTER */
         footer {
-            background: #2c3e50;
+            background-color: #000;
             color: #fff;
             text-align: center;
             padding: 20px;
             margin-top: 40px;
             font-size: 14px;
         }
-
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 32px;
-            }
-        }
     </style>
     <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
+
 <body>
 
-<header>
-    <div class="logo">Parque Acuático (Demo)</div>
-    <nav>
-        <a href="#">Inicio</a>
-        <a href="#">Atracciones</a>
-        <a href="#">Servicios</a>
-        <a href="#">Contacto</a>
-    </nav>
-</header>
+    <!-- HEADER -->
+    <header>
+        <h1>startickets</h1>
+        <nav>
+            <a href="#">Ingresar</a>
+            <a href="#">Registrarse</a>
+            <a href="#">🛒</a>
+        </nav>
+    </header>
 
-<section class="hero">
-    <div class="hero-content">
-        <h1>Diversión para toda la familia</h1>
-        <p>Ven y disfruta de albercas, toboganes y áreas recreativas.</p>
-        <a href="https://tickets.payuticket.com/event/parque-acuatico-ye8tv9?recurrenceSelection=true" class="btn-comprar">🎟️ Comprar entradas</a>
+    <!-- HERO -->
+    <section class="hero">
+        <h2>startickets.mx</h2>
+    </section>
+
+    <!-- SEARCH -->
+    <div class="search-container">
+        <input type="text" placeholder="Busca un evento">
     </div>
-</section>
 
-<section class="precios" id="precios">
-    <h2>Conoce nuestros precios</h2>
+    <!-- EVENTS -->
+    <section class="events">
+        <h3>Todos los eventos</h3>
 
-    <div class="cards">
-        <div class="card gratis">
-            <h3>Gratis</h3>
-            <div class="precio">$0</div>
-            <p>Menores de 90 cm de estatura.</p>
+        <div class="event-grid">
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0" alt="Evento 1">
+                <div class="content">
+                    <h4>El Cascanueces</h4>
+                    <p>19 de diciembre · Teatro de la Ciudad</p>
+                    <a class="vivenu-btn yourStylingClass" href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true">Buy Tickets</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819" alt="Evento 2">
+                <div class="content">
+                    <h4>The Grinch Takeover</h4>
+                    <p>20 de diciembre · Hol2</p>
+                    <a class="vivenu-btn yourStylingClass" href="https://prueba.tuticket.com.mx/event/pixel-universe-xeroiq?useEmbed=true">Buy Tickets</a>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063" alt="Evento 3">
+                <div class="content">
+                    <h4>Vaselina El Musical</h4>
+                    <p>17 de enero · Teatro de la Ciudad</p>
+                    <a class="vivenu-btn yourStylingClass" href="https://prueba.tuticket.com.mx/event/lakers-vs-warriors-sai93h?useEmbed=true">Buy Tickets</a>
+                </div>
+            </div>
+
         </div>
+    </section>
 
-        <div class="card chico">
-            <h3>Boleto Chico</h3>
-            <div class="precio">$130</div>
-            <p>De 90 cm a 140 cm.</p>
-        </div>
-
-        <div class="card grande">
-            <h3>Boleto Grande</h3>
-            <div class="precio">$240</div>
-            <p>Mayores de 140 cm.</p>
-        </div>
-
-        <div class="card insen">
-            <h3>INAPAM / INSEN</h3>
-            <div class="precio">$130</div>
-            <p>Presentando credencial.</p>
-        </div>
-    </div>
-</section>
-
-<footer>
-    © 2025 Parque Acuático - Página demostrativa
-</footer>
+    <!-- FOOTER -->
+    <footer>
+        © 2025 startickets.mx | Demo para demostración
+    </footer>
 
 </body>
 </html>
