@@ -2,226 +2,268 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>startickets.mx - Demo</title>
+    <title>TicketCity.mx - Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- VIVENU EMBED -->
+    <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+
     <style>
-        body {
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
             font-family: Arial, Helvetica, sans-serif;
-            background-color: #f5f5f5;
         }
 
-        /* HEADER */
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+
+        /* ===== HEADER ===== */
         header {
-            background-color: #000;
-            color: #fff;
-            padding: 15px 40px;
+            background: #ffffff;
+            padding: 12px 30px;
             display: flex;
+            align-items: center;
             justify-content: space-between;
-            align-items: center;
+            border-bottom: 1px solid #ddd;
         }
 
-        header h1 {
-            font-size: 22px;
-            margin: 0;
-        }
-
-        header nav a {
-            color: #fff;
-            margin-left: 20px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        /* HERO */
-        .hero {
-            background: linear-gradient(
-                rgba(0,0,0,0.6),
-                rgba(0,0,0,0.6)
-            ), url("https://images.unsplash.com/photo-1518972559570-7cc1309f3229");
-            background-size: cover;
-            background-position: center;
-            height: 300px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-        }
-
-        .hero h2 {
-            font-size: 48px;
+        .logo {
+            font-size: 26px;
             font-weight: bold;
         }
 
-        /* SEARCH */
-        .search-container {
-            margin: 30px auto;
-            max-width: 800px;
-            padding: 0 20px;
+        .logo span {
+            color: #ff9800;
         }
 
-        .search-container input {
+        .search-bar {
+            display: flex;
+            width: 45%;
+        }
+
+        .search-bar input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+        }
+
+        .search-bar button {
+            background: #ffb300;
+            border: none;
+            padding: 0 18px;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .points-sale {
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            height: 420px;
+            background: url("https://via.placeholder.com/1600x500/7a0000/ffffff?text=Los+Angeles+Azules") center/cover no-repeat;
+        }
+
+        .hero-overlay {
+            background: rgba(0,0,0,0.6);
             width: 100%;
-            padding: 15px;
+            height: 100%;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .hero-content {
+            max-width: 500px;
+            color: #fff;
+        }
+
+        .hero-content h1 {
+            font-size: 44px;
+            margin-bottom: 10px;
+        }
+
+        .hero-content p {
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        /* ===== BOTÓN COMPRAR ===== */
+        .buy-ticket-btn {
+            display: inline-block;
+            margin-top: 15px;
+            background: linear-gradient(135deg, #ff9800, #ffb300);
+            color: #000;
+            padding: 14px 30px;
+            font-weight: bold;
             font-size: 16px;
             border-radius: 6px;
-            border: 1px solid #ccc;
+            text-decoration: none;
+            transition: all .25s ease;
         }
 
-        /* EVENTS */
+        .buy-ticket-btn:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, #ffb300, #ffc107);
+        }
+
+        /* ===== EVENTS ===== */
         .events {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
+            padding: 50px 30px;
         }
 
-        .events h3 {
-            margin-bottom: 20px;
+        .events h2 {
+            text-align: center;
+            font-size: 30px;
+            margin-bottom: 40px;
         }
 
-        .event-grid {
+        .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            max-width: 1200px;
+            margin: auto;
         }
 
         .event-card {
-            background-color: #fff;
-            border-radius: 8px;
+            background: #fff;
+            border-radius: 6px;
             overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,.1);
+            transition: transform .2s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
         }
 
         .event-card img {
             width: 100%;
-            height: 180px;
+            height: 170px;
             object-fit: cover;
         }
 
-        .event-card .content {
+        .event-info {
             padding: 15px;
         }
 
-        .event-card h4 {
-            margin: 0 0 10px;
+        .event-info h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
         }
 
-        .event-card p {
+        .event-info p {
             font-size: 14px;
+            margin-bottom: 6px;
             color: #555;
         }
 
-        /* BOTÓN BOLETOS */
-        .buy-btn {
-            display: block;
-            margin-top: 12px;
+        .event-info .buy-ticket-btn {
             width: 100%;
-            padding: 12px;
-            background-color: #000;
-            color: #fff !important;
             text-align: center;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 14px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            margin-top: 12px;
         }
 
-        .buy-btn:hover {
-            background-color: #333;
-        }
-
-        /* FOOTER */
+        /* ===== FOOTER ===== */
         footer {
-            background-color: #000;
-            color: #fff;
+            background: #111;
+            color: #aaa;
             text-align: center;
             padding: 20px;
-            margin-top: 40px;
             font-size: 14px;
         }
     </style>
-
-    <!-- Vivenu Embed -->
-    <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
 
 <body>
 
-    <!-- HEADER -->
-    <header>
-        <h1>startickets</h1>
-        <nav>
-            <a href="#">Ingresar</a>
-            <a href="#">Registrarse</a>
-            <a href="#">🛒</a>
-        </nav>
-    </header>
+<!-- HEADER -->
+<header>
+    <div class="logo">ticket<span>city.mx</span></div>
 
-    <!-- HERO -->
-    <section class="hero">
-        <h2>startickets.mx</h2>
-    </section>
-
-    <!-- SEARCH -->
-    <div class="search-container">
-        <input type="text" placeholder="Busca un evento">
+    <div class="search-bar">
+        <input type="text" placeholder="Buscar Eventos">
+        <button>Buscar</button>
     </div>
 
-    <!-- EVENTS -->
-    <section class="events">
-        <h3>Todos los eventos</h3>
+    <div class="points-sale">📍 Puntos de venta</div>
+</header>
 
-        <div class="event-grid">
+<!-- HERO -->
+<section class="hero">
+    <div class="hero-overlay">
+        <div class="hero-content">
+            <h1>JOSE JOSE - LEÓN</h1>
+            <p>📅 30 de junio 2026</p>
+            <p>📍 Suite Lounge 2026, León, Gto.</p>
 
-            <!-- EVENTO 1 -->
-            <div class="event-card">
-                <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0" alt="El Cascanueces">
-                <div class="content">
-                    <h4>El Cascanueces</h4>
-                    <p>19 de diciembre · Teatro de la Ciudad</p>
-                    <a class="vivenu-btn buy-btn"
-                       href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true">
-                        Compra tus boletos
-                    </a>
-                </div>
-            </div>
-
-            <!-- EVENTO 2 -->
-            <div class="event-card">
-                <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819" alt="The Grinch Takeover">
-                <div class="content">
-                    <h4>The Grinch Takeover</h4>
-                    <p>20 de diciembre · Hol2</p>
-                    <a class="vivenu-btn buy-btn"
-                       href="https://prueba.tuticket.com.mx/event/pixel-universe-xeroiq?useEmbed=true">
-                        Compra tus boletos
-                    </a>
-                </div>
-            </div>
-
-            <!-- EVENTO 3 -->
-            <div class="event-card">
-                <img src="https://images.unsplash.com/photo-1506157786151-b8491531f063" alt="Vaselina El Musical">
-                <div class="content">
-                    <h4>Vaselina El Musical</h4>
-                    <p>17 de enero · Teatro de la Ciudad</p>
-                    <a class="vivenu-btn buy-btn"
-                       href="https://prueba.tuticket.com.mx/event/lakers-vs-warriors-sai93h?useEmbed=true">
-                        Compra tus boletos
-                    </a>
-                </div>
-            </div>
-
+            <a class="vivenu-btn buy-ticket-btn" href="https://prueba.tuticket.com.mx/event/jose-jose-7xy150?useEmbed=true">
+               🎟️ Comprar boletos
+            </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- FOOTER -->
-    <footer>
-        © 2025 startickets.mx | Demo para demostración
-    </footer>
+<!-- EVENTS -->
+<section class="events">
+    <h2>Eventos próximos</h2>
+
+    <div class="events-grid">
+
+        <!-- EVENTO -->
+        <div class="event-card">
+            <img src="concierto.jpg">
+            <div class="event-info">
+                <h3>CONCIETO GALACTICO</h3>
+                <p>📅 31 de mayo 2026</p>
+                <p>📍 León, Gto.</p>
+                <a class="vivenu-btn buy-ticket-btn" href="https://prueba.tuticket.com.mx/event/las-50-sombras-de-tila-w75ui7?useEmbed=true">
+                   🎟️ Comprar boletos
+                </a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="amanda.jpg">
+            <div class="event-info">
+                <h3>AMANDA MIGUEL</h3>
+                <p>📅 30 de mayo 2026</p>
+                <p>📍 León, Gto.</p>
+                <a class="vivenu-btn buy-ticket-btn"
+                   href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true">
+                   🎟️ Comprar boletos
+                </a>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://via.placeholder.com/400x250?text=Los+Recoditos">
+            <div class="event-info">
+                <h3>Los Recoditos</h3>
+                <p>📅 20 de enero 2026</p>
+                <p>📍 León, Gto.</p>
+                <a class="vivenu-btn buy-ticket-btn"
+                   href="https://prueba.tuticket.com.mx/event/amanda-miguel-forum-gx8euc?useEmbed=true">
+                   🎟️ Comprar boletos
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<footer>
+    © 2026 TicketCity.mx — Demostración visual
+</footer>
 
 </body>
 </html>
