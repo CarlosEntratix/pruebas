@@ -1,216 +1,221 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Demo Lucha Libre - Eventos</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hologram Zoo México - Demo</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-yellow: #ffcc00;
+            --secondary-blue: #00d4ff;
+            --bg-dark: #020b16;
+            --glow-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+        }
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, Helvetica, sans-serif;
-}
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-dark);
+            color: white;
+            overflow-x: hidden;
+        }
 
-body {
-    background-color: #f2f2f2;
-}
+        /* Fondo con efecto de luces difusas */
+        .background-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 40%),
+                        radial-gradient(circle at 70% 60%, rgba(255, 204, 0, 0.05) 0%, transparent 40%);
+            z-index: -1;
+        }
 
-/* HEADER */
-header {
-    background-color: #ffffff;
-    padding: 15px 40px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border-bottom: 1px solid #ddd;
-}
+        /* Navbar */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background: rgba(2, 11, 22, 0.9);
+        }
 
-.logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #c40000;
-}
+        .logo-placeholder {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--secondary-blue);
+        }
 
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 25px;
-}
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
 
-nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 500;
-    transition: 0.3s;
-}
+        .nav-links a {
+            text-decoration: none;
+            color: #ddd;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
 
-nav a:hover {
-    color: #c40000;
-}
+        .nav-links a:hover {
+            color: var(--primary-yellow);
+        }
 
-/* BANNER SUPERIOR */
-.top-banner {
-    background: linear-gradient(to right, #990000, #cc0000);
-    color: white;
-    text-align: center;
-    padding: 40px 20px;
-}
+        .btn-tickets-nav {
+            background-color: var(--primary-yellow);
+            color: #000;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
 
-.top-banner h2 {
-    font-size: 28px;
-}
+        /* Hero Section */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 80vh;
+            text-align: center;
+            padding: 0 20px;
+        }
 
-/* SECCIÓN EVENTOS */
-.section-title {
-    text-align: center;
-    font-size: 30px;
-    margin: 40px 0 20px 0;
-}
+        .headline {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-yellow);
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
+            margin-bottom: 50px;
+            max-width: 800px;
+        }
 
-.events {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 25px;
-    padding: 0 20px 60px 20px;
-}
+        /* Logo Central */
+        .main-logo-container {
+            margin-bottom: 40px;
+        }
 
-.event-card {
-    background-color: white;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    transition: 0.3s;
-}
+        .main-logo-text {
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            line-height: 0.9;
+        }
 
-.event-card:hover {
-    transform: translateY(-6px);
-}
+        .hologram {
+            font-size: 5rem;
+            font-weight: 900;
+            color: #fff;
+            text-shadow: 3px 3px 0 var(--secondary-blue), 0 0 30px var(--secondary-blue);
+            font-style: italic;
+        }
 
-.event-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-}
+        .zoo {
+            font-size: 7rem;
+            font-weight: 900;
+            color: var(--primary-yellow);
+            display: block;
+            -webkit-text-stroke: 2px #fff;
+            text-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
+        }
 
-.event-info {
-    padding: 20px;
-}
+        .mexico {
+            font-size: 2rem;
+            color: #4caf50;
+            letter-spacing: 5px;
+            margin-top: 10px;
+        }
 
-.event-info h3 {
-    margin-bottom: 10px;
-    color: #c40000;
-}
+        .sub-headline {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
 
-.event-info p {
-    margin-bottom: 8px;
-}
+        .btn-main {
+            background: linear-gradient(to bottom, #ffcc00, #ff9900);
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            font-size: 1.1rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
 
-/* BOTONES */
-.event-btn {
-    display: inline-block;
-    margin-top: 12px;
-    padding: 10px 20px;
-    background-color: #ff0000;
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 5px;
-    transition: 0.3s;
-}
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 204, 0, 0.7);
+        }
 
-.event-btn:hover {
-    background-color: #cc0000;
-}
-
-/* FOOTER */
-footer {
-    background-color: #111;
-    color: white;
-    text-align: center;
-    padding: 20px;
-}
-</style>
-
-<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+        /* Botón Flotante WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="logo">AAA DEMO</div>
+    <div class="background-overlay"></div>
+
     <nav>
-        <ul>
-            <li><a href="#">Alianzas</a></li>
-            <li><a href="#">Orígenes</a></li>
-            <li><a href="#">Triplemanía</a></li>
-            <li><a href="#">Luchadores</a></li>
-            <li><a href="#">Boletos</a></li>
+        <div class="logo-placeholder">Hologram Zoo</div>
+        <ul class="nav-links">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Aventuras</a></li>
+            <li><a href="#">Prensa</a></li>
+            <li><a href="#">Paquetes para Grupos</a></li>
+            <li><a href="#">📍 Horarios y Ubicación</a></li>
+            <li><a href="#">🌐 EN</a></li>
         </ul>
+        <a href="https://tickets.payuticket.com/event/hologram-zoo-snn3wd" class="btn-tickets-nav">¡Compra tus boletos!</a>
     </nav>
-</header>
 
-<section class="top-banner">
-    <h2>GIRA 2026 - BOLETOS DISPONIBLES</h2>
-</section>
+    <section class="hero">
+        <h1 class="headline">Descubre el primer zoológico de hologramas en Latinoamérica.</h1>
 
-<h2 class="section-title">Próximos Eventos</h2>
-
-<section class="events">
-
-    <!-- EVENTO 1 -->
-    <div class="event-card">
-        <img src="amanda.jpg" alt="Evento Monterrey">
-        <div class="event-info">
-            <h3>AAA Monterrey</h3>
-            <p><strong>Fecha:</strong> 10 Marzo 2026</p>
-            <p><strong>Lugar:</strong> Arena Monterrey</p>
-            <a class="event-btn vivenu-btn" 
-               href="https://tickets.pixeluniverse.mx/checkout/test-carlos-wgr5kt?useEmbed=true">
-               Comprar Boletos
-            </a>
+        <div class="main-logo-container">
+            <div class="main-logo-text">
+                <span class="hologram">Hologram</span>
+                <span class="zoo">ZOO</span>
+                <div class="mexico">MÉXICO</div>
+            </div>
         </div>
+
+        <p class="sub-headline">
+            Descubre animales maravillosos en nuestro zoológico holográfico interactivo.
+        </p>
+
+        <a href="https://tickets.payuticket.com/event/hologram-zoo-snn3wd?recurrenceSelection=true" class="btn-main">
+            ¡Compra tus boletos!
+        </a>
+    </section>
+
+    <div class="whatsapp-float">
+        <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.406.836 2.946 1.285 4.527 1.285 4.899 0 8.886-3.987 8.888-8.887 0-2.37-.92-4.597-2.592-6.269s-3.9-2.593-6.27-2.593c-4.897 0-8.885 3.987-8.887 8.889 0 1.691.479 3.342 1.386 4.79l-.999 3.649 3.747-.984z"/></svg>
     </div>
-
-    <!-- EVENTO 2 -->
-    <div class="event-card">
-        <img src="libre.jpg" alt="Evento Guadalajara">
-        <div class="event-info">
-            <h3>AAA Guadalajara</h3>
-            <p><strong>Fecha:</strong> 18 Marzo 2026</p>
-            <p><strong>Lugar:</strong> Arena VFG</p>
-            <a class="event-btn vivenu-btn" 
-               href="https://tickets.payuticket.com/event/luchas-mpe4hk?useEmbed=true">
-               Comprar Boletos
-            </a>
-        </div>
-    </div>
-
-    <!-- EVENTO 3 -->
-    <div class="event-card">
-        <img src="lucha.jpeg" alt="Evento CDMX">
-        <div class="event-info">
-            <h3>AAA Ciudad de México</h3>
-            <p><strong>Fecha:</strong> 25 Marzo 2026</p>
-            <p><strong>Lugar:</strong> Palacio de los Deportes</p>
-            <a class="event-btn" 
-               href="https://boletomovil.com/evento/lucha-libre-aaa-alianzas-2025-07-25" 
-               target="_blank">
-               Comprar Boletos
-            </a>
-        </div>
-    </div>
-
-</section>
-
-<footer>
-    © 2026 Demo Lucha Libre - Página de demostración
-</footer>
 
 </body>
-</html>
-
-
-
+</html> 
