@@ -3,219 +3,263 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hologram Zoo México - Demo</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Demo | Barranca de los Jilgueros - Sistema de Venta</title>
     <style>
         :root {
-            --primary-yellow: #ffcc00;
-            --secondary-blue: #00d4ff;
-            --bg-dark: #020b16;
-            --glow-shadow: 0 0 15px rgba(255, 204, 0, 0.6);
+            --jilgueros-green: #89a84d; /* El verde característico de su logo/web */
+            --dark-text: #333;
+            --accent-red: #c0392b;
         }
 
-        body, html {
+        * {
             margin: 0;
             padding: 0;
-            height: 100%;
-            font-family: 'Roboto', sans-serif;
-            background-color: var(--bg-dark);
-            color: white;
-            overflow-x: hidden;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
-        /* Fondo con efecto de luces difusas */
-        .background-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 30%, rgba(0, 212, 255, 0.05) 0%, transparent 40%),
-                        radial-gradient(circle at 70% 60%, rgba(255, 204, 0, 0.05) 0%, transparent 40%);
-            z-index: -1;
-        }
-
-        /* Navbar */
-        nav {
+        /* Barra de Navegación Estilo Original */
+        .navbar {
+            background-color: var(--jilgueros-green);
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 50px;
-            background: rgba(2, 11, 22, 0.9);
+            color: white;
+            font-size: 14px;
         }
 
-        .logo-placeholder {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 1.2rem;
-            color: var(--secondary-blue);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #ddd;
-            font-size: 0.9rem;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary-yellow);
-        }
-
-        .btn-tickets-nav {
-            background-color: var(--primary-yellow);
-            color: #000;
-            padding: 10px 20px;
-            border-radius: 5px;
+        .nav-links span {
+            margin: 0 10px;
+            cursor: pointer;
+            text-transform: uppercase;
             font-weight: bold;
-            text-decoration: none;
-            font-size: 0.85rem;
         }
 
-        /* Hero Section */
+        /* Hero Section con el botón central */
         .hero {
+            height: 450px;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
             display: flex;
-            flex-direction: column;
-            align-items: center;
             justify-content: center;
-            height: 80vh;
+            align-items: center;
+        }
+
+        .btn-reserva {
+            background-color: var(--jilgueros-green);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 20px;
+            border: 2px solid white;
+            transition: 0.3s;
+        }
+
+        /* Sección de Texto */
+        .intro-text {
             text-align: center;
+            padding: 40px 10%;
+            line-height: 1.6;
+        }
+
+        .highlight {
+            color: var(--accent-red);
+            font-weight: bold;
+        }
+
+        /* Grid de Actividades (Botones) */
+        .grid-actividades {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 1000px;
+            margin: 0 auto 50px auto;
             padding: 0 20px;
         }
 
-        .headline {
-            font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem;
-            color: var(--primary-yellow);
-            text-shadow: 0 0 20px rgba(255, 204, 0, 0.5);
-            margin-bottom: 50px;
-            max-width: 800px;
-        }
-
-        /* Logo Central */
-        .main-logo-container {
-            margin-bottom: 40px;
-        }
-
-        .main-logo-text {
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
-            line-height: 0.9;
-        }
-
-        .hologram {
-            font-size: 5rem;
-            font-weight: 900;
-            color: #fff;
-            text-shadow: 3px 3px 0 var(--secondary-blue), 0 0 30px var(--secondary-blue);
-            font-style: italic;
-        }
-
-        .zoo {
-            font-size: 7rem;
-            font-weight: 900;
-            color: var(--primary-yellow);
-            display: block;
-            -webkit-text-stroke: 2px #fff;
-            text-shadow: 0 0 20px rgba(255, 204, 0, 0.8);
-        }
-
-        .mexico {
-            font-size: 2rem;
-            color: #4caf50;
-            letter-spacing: 5px;
-            margin-top: 10px;
-        }
-
-        .sub-headline {
-            font-size: 1.2rem;
-            max-width: 600px;
-            line-height: 1.5;
-            margin-bottom: 30px;
-            color: #ccc;
-        }
-
-        .btn-main {
-            background: linear-gradient(to bottom, #ffcc00, #ff9900);
-            border: none;
-            padding: 15px 40px;
-            border-radius: 8px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: bold;
-            font-size: 1.1rem;
+        .card {
+            position: relative;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .btn-main:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 30px rgba(255, 204, 0, 0.7);
-        }
-
-        /* Botón Flotante WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background-color: #25d366;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            overflow: hidden;
+            border-radius: 4px;
+            transition: transform 0.3s;
+        }
+
+        .card:hover { transform: scale(1.03); }
+
+        .card::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.3);
+        }
+
+        .card h3 {
+            position: relative;
+            color: white;
+            text-transform: uppercase;
+            font-size: 22px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            text-align: center;
+            padding: 10px;
+        }
+
+        /* Sección de Estadísticas */
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            padding: 50px 5%;
+            text-align: center;
+            background-color: #fff;
+        }
+
+        .stat-item h2 { font-size: 40px; color: #333; }
+        .stat-item p { font-size: 12px; color: #666; text-transform: uppercase; font-weight: bold; }
+
+        /* MODAL (EL POP-UP DEL SISTEMA) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+        }
+
+        .close {
+            position: absolute;
+            right: 20px; top: 10px;
+            font-size: 28px; cursor: pointer;
+        }
+
+        .input-booking {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .btn-confirmar {
+            background: var(--jilgueros-green);
+            color: white;
+            border: none;
+            padding: 15px;
+            width: 100%;
+            font-size: 18px;
             cursor: pointer;
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .grid-actividades { grid-template-columns: 1fr; }
+            .stats-container { flex-wrap: wrap; }
+            .stat-item { width: 50%; margin-bottom: 20px; }
         }
     </style>
+    <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
 <body>
 
-    <div class="background-overlay"></div>
-
-    <nav>
-        <div class="logo-placeholder">Hologram Zoo</div>
-        <ul class="nav-links">
-            <li><a href="#">Inicio</a></li>
-            <li><a href="#">Aventuras</a></li>
-            <li><a href="#">Prensa</a></li>
-            <li><a href="#">Paquetes para Grupos</a></li>
-            <li><a href="#">📍 Horarios y Ubicación</a></li>
-            <li><a href="#">🌐 EN</a></li>
-        </ul>
-        <a href="https://tickets.payuticket.com/event/hologram-zoo-snn3wd" class="btn-tickets-nav">¡Compra tus boletos!</a>
+    <nav class="navbar">
+        <div class="logo">BARRANCA DE LOS JILGUEROS</div>
+        <div class="nav-links">
+            <span>¿Quiénes somos?</span>
+            <span>Experiencias</span>
+            <span>Contacto</span>
+        </div>
     </nav>
 
-    <section class="hero">
-        <h1 class="headline">Descubre el primer zoológico de hologramas en Latinoamérica.</h1>
+    <header class="hero">
+        <a href="#" class="btn-reserva" onclick="openModal('General')">RESERVA YA</a>
+    </header>
 
-        <div class="main-logo-container">
-            <div class="main-logo-text">
-                <span class="hologram">Hologram</span>
-                <span class="zoo">ZOO</span>
-                <div class="mexico">MÉXICO</div>
-            </div>
-        </div>
-
-        <p class="sub-headline">
-            Descubre animales maravillosos en nuestro zoológico holográfico interactivo.
-        </p>
-
-        <a href="https://tickets.payuticket.com/event/hologram-zoo-snn3wd?recurrenceSelection=true" class="btn-main">
-            ¡Compra tus boletos!
-        </a>
+    <section class="intro-text">
+        <p>Somos el hogar de la <span class="highlight">TIROLESA más alta y rápida de México</span> ubicada en Zacatlán Puebla.</p>
+        <p>Amantes del medio ambiente y la ADRENALINA.</p>
     </section>
 
-    <div class="whatsapp-float">
-        <svg width="30" height="30" fill="white" viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.417-.003 6.557-5.338 11.892-11.893 11.892-1.997-.001-3.951-.5-5.688-1.448l-6.305 1.652zm6.599-3.835c1.406.836 2.946 1.285 4.527 1.285 4.899 0 8.886-3.987 8.888-8.887 0-2.37-.92-4.597-2.592-6.269s-3.9-2.593-6.27-2.593c-4.897 0-8.885 3.987-8.887 8.889 0 1.691.479 3.342 1.386 4.79l-.999 3.649 3.747-.984z"/></svg>
+    <div class="grid-actividades">
+        <a class="card vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/zipline-z2b32i" style="background-image: url('https://tickets.payuticket.com/event/zipline-z2b32i'); text-decoration: none;">
+            <h3>ZIPLINE</h3>
+        </a>
+
+        <a class="card vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/senderismo-tlm10b" style="background-image: url('https://tickets.payuticket.com/event/senderismo-tlm10b'); text-decoration: none;">
+            <h3>SENDERISMO</h3>
+        </a>
+
+        <a class="card vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/camping-ucvbjy" style="background-image: url('https://tickets.payuticket.com/event/camping-ucvbjy'); text-decoration: none;">
+            <h3>CAMPING</h3>
+        </a>
     </div>
 
+    <div class="stats-container">
+        <div class="stat-item"><h2>500</h2><p>Metros de Altura</p></div>
+        <div class="stat-item"><h2>1,400</h2><p>Metros de Longitud</p></div>
+        <div class="stat-item"><h2>100</h2><p>KM / HRA</p></div>
+        <div class="stat-item"><h2>1.5</h2><p>Minutos de Adrenalina</p></div>
+        <div class="stat-item"><h2>18,500</h2><p>Vuelos Realizados</p></div>
+    </div>
+
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="color: var(--jilgueros-green);">Reservar Actividad</h2>
+            <p>Selecciona tus detalles y paga en línea</p>
+            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
+            
+            <label style="display:block; text-align:left;">Fecha:</label>
+            <input type="date" class="input-booking">
+            
+            <label style="display:block; text-align:left;">Personas:</label>
+            <input type="number" class="input-booking" value="1" min="1">
+            
+            <div style="background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 5px;">
+                <strong>Total estimado: $550 MXN</strong>
+            </div>
+
+            <button class="btn-confirmar" onclick="alert('Aquí se conectaría con la pasarela de pagos segura.')">
+                COMPRAR BOLETOS AHORA
+            </button>
+        </div>
+    </div>
+
+    <script>
+        function openModal(actividad) {
+            document.getElementById('modalTitle').innerText = 'Reservar: ' + actividad;
+            document.getElementById('bookingModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('bookingModal').style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('bookingModal')) {
+                closeModal();
+            }
+        }
+    </script>
+
 </body>
-</html> 
+</html>
