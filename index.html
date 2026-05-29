@@ -1,265 +1,333 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo | Barranca de los Jilgueros - Sistema de Venta</title>
-    <style>
-        :root {
-            --jilgueros-green: #89a84d; /* El verde característico de su logo/web */
-            --dark-text: #333;
-            --accent-red: #c0392b;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>EventHub | Demo Boletaje</title>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
 
-        /* Barra de Navegación Estilo Original */
-        .navbar {
-            background-color: var(--jilgueros-green);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            color: white;
-            font-size: 14px;
-        }
+    body{
+      background:#f5f5f5;
+      color:#222;
+    }
 
-        .nav-links span {
-            margin: 0 10px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-weight: bold;
-        }
+    header{
+      background:linear-gradient(135deg,#FF5900,#ff7b33);
+      color:white;
+      padding:70px 20px;
+      text-align:center;
+    }
 
-        /* Hero Section con el botón central */
-        .hero {
-            height: 450px;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=1200&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    /* LOGO */
+    .logo{
+      width:140px;
+      height:auto;
+      margin-bottom:25px;
+      border-radius:20px;
+      background:white;
+      padding:10px;
+      box-shadow:0 6px 20px rgba(0,0,0,.2);
+    }
 
-        .btn-reserva {
-            background-color: var(--jilgueros-green);
-            color: white;
-            padding: 15px 40px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 20px;
-            border: 2px solid white;
-            transition: 0.3s;
-        }
+    header h1{
+      font-size:3rem;
+      margin-bottom:15px;
+    }
 
-        /* Sección de Texto */
-        .intro-text {
-            text-align: center;
-            padding: 40px 10%;
-            line-height: 1.6;
-        }
+    header p{
+      max-width:700px;
+      margin:auto;
+      font-size:1.1rem;
+      opacity:.95;
+    }
 
-        .highlight {
-            color: var(--accent-red);
-            font-weight: bold;
-        }
+    .container{
+      width:90%;
+      max-width:1200px;
+      margin:50px auto;
+    }
 
-        /* Grid de Actividades (Botones) */
-        .grid-actividades {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            max-width: 1000px;
-            margin: 0 auto 50px auto;
-            padding: 0 20px;
-        }
+    .section-title{
+      font-size:2rem;
+      margin-bottom:30px;
+      color:#FF5900;
+    }
 
-        .card {
-            position: relative;
-            height: 200px;
-            background-size: cover;
-            background-position: center;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            overflow: hidden;
-            border-radius: 4px;
-            transition: transform 0.3s;
-        }
+    /* EVENTOS EN VERTICAL */
+    .events-list{
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
 
-        .card:hover { transform: scale(1.03); }
+    .event-card{
+      background:white;
+      border-radius:18px;
+      overflow:hidden;
+      display:flex;
+      min-height:260px;
+      box-shadow:0 8px 24px rgba(0,0,0,.08);
+      transition:.3s;
+    }
 
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.3);
-        }
+    .event-card:hover{
+      transform:translateY(-4px);
+    }
 
-        .card h3 {
-            position: relative;
-            color: white;
-            text-transform: uppercase;
-            font-size: 22px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
-            text-align: center;
-            padding: 10px;
-        }
+    /* IMAGEN IZQUIERDA */
+    .event-image{
+      width:40%;
+      min-height:260px;
+    }
 
-        /* Sección de Estadísticas */
-        .stats-container {
-            display: flex;
-            justify-content: space-around;
-            padding: 50px 5%;
-            text-align: center;
-            background-color: #fff;
-        }
+    .event-image img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
 
-        .stat-item h2 { font-size: 40px; color: #333; }
-        .stat-item p { font-size: 12px; color: #666; text-transform: uppercase; font-weight: bold; }
+    /* INFO DERECHA */
+    .event-info{
+      width:60%;
+      padding:30px;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+    }
 
-        /* MODAL (EL POP-UP DEL SISTEMA) */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 2000;
-            left: 0; top: 0; width: 100%; height: 100%;
-            background-color: rgba(0,0,0,0.7);
-        }
+    .badge{
+      display:inline-block;
+      background:#ffe2d1;
+      color:#FF5900;
+      padding:7px 14px;
+      border-radius:30px;
+      font-size:.85rem;
+      font-weight:bold;
+      margin-bottom:15px;
+      width:fit-content;
+    }
 
-        .modal-content {
-            background-color: white;
-            margin: 5% auto;
-            padding: 30px;
-            width: 90%;
-            max-width: 500px;
-            border-radius: 10px;
-            text-align: center;
-            position: relative;
-        }
+    .event-info h3{
+      font-size:1.8rem;
+      margin-bottom:15px;
+    }
 
-        .close {
-            position: absolute;
-            right: 20px; top: 10px;
-            font-size: 28px; cursor: pointer;
-        }
+    .info{
+      color:#555;
+      margin-bottom:8px;
+      font-size:1rem;
+    }
 
-        .input-booking {
-            width: 100%;
-            padding: 12px;
-            margin: 10px 0;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
+    .description{
+      margin:18px 0;
+      line-height:1.6;
+      color:#444;
+    }
 
-        .btn-confirmar {
-            background: var(--jilgueros-green);
-            color: white;
-            border: none;
-            padding: 15px;
-            width: 100%;
-            font-size: 18px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
+    .bottom-row{
+      margin-top:10px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:20px;
+      flex-wrap:wrap;
+    }
 
-        @media (max-width: 768px) {
-            .grid-actividades { grid-template-columns: 1fr; }
-            .stats-container { flex-wrap: wrap; }
-            .stat-item { width: 50%; margin-bottom: 20px; }
-        }
-    </style>
-    <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+    .price{
+      font-size:1.8rem;
+      font-weight:bold;
+      color:#FF5900;
+    }
+
+    .btn{
+      background:#FF5900;
+      color:white;
+      text-decoration:none;
+      padding:14px 24px;
+      border-radius:10px;
+      font-weight:bold;
+      transition:.3s;
+    }
+
+    .btn:hover{
+      background:#d94c00;
+    }
+
+    footer{
+      margin-top:70px;
+      background:#1d1d1d;
+      color:white;
+      text-align:center;
+      padding:30px;
+    }
+
+    /* RESPONSIVE */
+    @media(max-width:900px){
+
+      .event-card{
+        flex-direction:column;
+      }
+
+      .event-image,
+      .event-info{
+        width:100%;
+      }
+
+      .event-image{
+        height:250px;
+      }
+
+      .event-info{
+        padding:25px;
+      }
+
+      .event-info h3{
+        font-size:1.5rem;
+      }
+
+      .logo{
+        width:110px;
+      }
+
+    }
+
+  </style>
 </head>
+<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 <body>
 
-    <nav class="navbar">
-        <div class="logo">BARRANCA DE LOS JILGUEROS</div>
-        <div class="nav-links">
-            <span>¿Quiénes somos?</span>
-            <span>Experiencias</span>
-            <span>Contacto</span>
+  <header>
+
+    <!-- LOGO -->
+    <img 
+      src="anahuac.jpg" 
+      alt="Logo"
+      class="logo"
+    >
+
+    <h1>ANÁHUAC</h1>
+
+    <p>
+      Plataforma demo para registro de asistentes
+      y administración de eventos presenciales y virtuales.
+    </p>
+
+  </header>
+
+  <div class="container">
+
+    <h2 class="section-title">Próximos Eventos</h2>
+
+    <div class="events-list">
+
+      <!-- EVENTO 1 -->
+      <div class="event-card">
+
+        <div class="event-image">
+          <img src="carrera.jpg" alt="">
         </div>
-    </nav>
 
-    <header class="hero">
-        <a href="#" class="btn-reserva" onclick="openModal('General')">RESERVA YA</a>
-    </header>
+        <div class="event-info">
 
-    <section class="intro-text">
-        <p>Somos el hogar de la <span class="highlight">TIROLESA más alta y rápida de México</span> ubicada en Zacatlán Puebla.</p>
-        <p>Amantes del medio ambiente y la ADRENALINA.</p>
-    </section>
+          <span class="badge">CARRERA</span>
 
-    <div class="grid-actividades">
-        <a class="card vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/zipline-z2b32i" style="background-image: url('https://tickets.payuticket.com/event/zipline-z2b32i'); text-decoration: none;">
-            <h3>ZIPLINE</h3>
-        </a>
+          <h3>Carrera Anáhuac 2026</h3>
 
-        <a class="card vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/senderismo-tlm10b" style="background-image: url('https://tickets.payuticket.com/event/senderismo-tlm10b'); text-decoration: none;">
-            <h3>SENDERISMO</h3>
-        </a>
+          <p class="info">📅 15 Junio 2026</p>
+          <p class="info">🕒 6:00 PM</p>
+          <p class="info">📍 Puebla, México</p>
 
-        <a class="card vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/camping-ucvbjy" style="background-image: url('https://tickets.payuticket.com/event/camping-ucvbjy'); text-decoration: none;">
-            <h3>CAMPING</h3>
-        </a>
-    </div>
+          <p class="description">
+            Ven y vive la experiecnia de nuestar carrera Anáhuac 2026.
+          </p>
 
-    <div class="stats-container">
-        <div class="stat-item"><h2>500</h2><p>Metros de Altura</p></div>
-        <div class="stat-item"><h2>1,400</h2><p>Metros de Longitud</p></div>
-        <div class="stat-item"><h2>100</h2><p>KM / HRA</p></div>
-        <div class="stat-item"><h2>1.5</h2><p>Minutos de Adrenalina</p></div>
-        <div class="stat-item"><h2>18,500</h2><p>Vuelos Realizados</p></div>
-    </div>
+          <div class="bottom-row">
+            <div class="price">$149 MXN</div>
+            <a class="vivenu-btn yourStylingClass btn" href="https://prueba.tuticket.com.mx/event/carrera-anahuac-trbgk3?useEmbed=true">Comprar boleto</a>
+          </div>
 
-    <div id="bookingModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2 id="modalTitle" style="color: var(--jilgueros-green);">Reservar Actividad</h2>
-            <p>Selecciona tus detalles y paga en línea</p>
-            <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
-            
-            <label style="display:block; text-align:left;">Fecha:</label>
-            <input type="date" class="input-booking">
-            
-            <label style="display:block; text-align:left;">Personas:</label>
-            <input type="number" class="input-booking" value="1" min="1">
-            
-            <div style="background: #f9f9f9; padding: 15px; margin: 10px 0; border-radius: 5px;">
-                <strong>Total estimado: $550 MXN</strong>
-            </div>
-
-            <button class="btn-confirmar" onclick="alert('Aquí se conectaría con la pasarela de pagos segura.')">
-                COMPRAR BOLETOS AHORA
-            </button>
         </div>
+
+      </div>
+
+      <!-- EVENTO 2 -->
+      <div class="event-card">
+
+        <div class="event-image">
+          <img src="con.jpg" alt="">
+        </div>
+
+        <div class="event-info">
+
+          <span class="badge">CONFERENCIA</span>
+
+          <h3>Marketing Digital para Empresas</h3>
+
+          <p class="info">📅 22 Junio 2026</p>
+          <p class="info">🕒 7:30 PM</p>
+          <p class="info">💻 Evento Presencial</p>
+
+          <p class="description">
+            Aprende estrategias de marketing digital,
+            automatización y posicionamiento de marca
+            para aumentar conversiones.
+          </p>
+
+          <div class="bottom-row">
+            <div class="price">$99 MXN</div>
+            <a class="vivenu-btn yourStylingClass btn" href="https://prueba.tuticket.com.mx/event/marketing-digital-para-empresas-dxbpsa?useEmbed=true">Reservar acceso</a>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- EVENTO 3 -->
+      <div class="event-card">
+
+        <div class="event-image">
+          <img src="dia.jpg" alt="">
+        </div>
+
+        <div class="event-info">
+
+          <span class="badge">DIA ANAHUAC</span>
+
+          <h3>Ven y vive el primer gran día</h3>
+
+          <p class="info">📅 30 Junio 2026</p>
+          <p class="info">🕒 5:00 PM</p>
+          <p class="info">📍 Centro de Convenciones</p>
+
+          <p class="description">
+            Conecta con empresarios, inversionistas y líderes
+            de distintas industrias en una experiencia premium
+            de networking.
+          </p>
+
+          <div class="bottom-row">
+            <div class="price">$270 MXN</div>
+            <a class="vivenu-btn yourStylingClass btn" href="https://prueba.tuticket.com.mx/event/prueba-bandra-5z2jv0?useEmbed=true">Adquirir boleto</a>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
-    <script>
-        function openModal(actividad) {
-            document.getElementById('modalTitle').innerText = 'Reservar: ' + actividad;
-            document.getElementById('bookingModal').style.display = "block";
-        }
+  </div>
 
-        function closeModal() {
-            document.getElementById('bookingModal').style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == document.getElementById('bookingModal')) {
-                closeModal();
-            }
-        }
-    </script>
+  <footer>
+    Demo de Sistema de Boletaje © 2026
+  </footer>
 
 </body>
 </html>
