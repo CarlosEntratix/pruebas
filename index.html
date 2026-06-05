@@ -1,333 +1,325 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>EventHub | Demo Boletaje</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRILLA FEST</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, Helvetica, sans-serif;
-    }
+<style>
 
-    body{
-      background:#f5f5f5;
-      color:#222;
-    }
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#65107a;
+    color:white;
+}
+
+header{
+    background:#7a1b8a;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-size:14px;
+}
+
+.hero{
+    height:320px;
+    background:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600') center/cover no-repeat;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+}
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+
+.hero-content h1{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.hero-content p{
+    font-size:22px;
+}
+
+.info{
+    background:#6a137d;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.info h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:24px;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:#f5c028;
+    color:#000;
+    text-decoration:none;
+    font-size:28px;
+    font-weight:bold;
+    padding:20px 50px;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* CALENDARIO */
+
+.calendar{
+    max-width:700px;
+    margin:50px auto 0;
+    background:rgba(255,255,255,.08);
+    padding:30px;
+    border-radius:25px;
+}
+
+.calendar h3{
+    color:#f5c028;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+}
+
+.day-name{
+    text-align:center;
+    font-weight:bold;
+    color:#f5c028;
+    padding:10px 0;
+}
+
+.day-link{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:55px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.12);
+    border-radius:12px;
+    transition:.3s;
+    font-size:16px;
+}
+
+.day-link:hover{
+    background:#f5c028;
+    color:black;
+    transform:scale(1.08);
+}
+
+.christmas{
+    background:#f5c028;
+    color:black;
+    font-weight:bold;
+}
+
+.newyear{
+    background:#00d084;
+    color:black;
+    font-weight:bold;
+}
+
+.legend{
+    margin-top:20px;
+    font-size:15px;
+    line-height:1.8;
+}
+
+@media(max-width:768px){
 
     header{
-      background:linear-gradient(135deg,#FF5900,#ff7b33);
-      color:white;
-      padding:70px 20px;
-      text-align:center;
+        justify-content:center;
+        text-align:center;
     }
 
-    /* LOGO */
-    .logo{
-      width:140px;
-      height:auto;
-      margin-bottom:25px;
-      border-radius:20px;
-      background:white;
-      padding:10px;
-      box-shadow:0 6px 20px rgba(0,0,0,.2);
+    nav{
+        margin-top:15px;
     }
 
-    header h1{
-      font-size:3rem;
-      margin-bottom:15px;
+    nav a{
+        display:inline-block;
+        margin:8px;
     }
 
-    header p{
-      max-width:700px;
-      margin:auto;
-      font-size:1.1rem;
-      opacity:.95;
+    .hero-content h1{
+        font-size:40px;
     }
 
-    .container{
-      width:90%;
-      max-width:1200px;
-      margin:50px auto;
+    .info h2{
+        font-size:32px;
     }
 
-    .section-title{
-      font-size:2rem;
-      margin-bottom:30px;
-      color:#FF5900;
-    }
-
-    /* EVENTOS EN VERTICAL */
-    .events-list{
-      display:flex;
-      flex-direction:column;
-      gap:30px;
-    }
-
-    .event-card{
-      background:white;
-      border-radius:18px;
-      overflow:hidden;
-      display:flex;
-      min-height:260px;
-      box-shadow:0 8px 24px rgba(0,0,0,.08);
-      transition:.3s;
-    }
-
-    .event-card:hover{
-      transform:translateY(-4px);
-    }
-
-    /* IMAGEN IZQUIERDA */
-    .event-image{
-      width:40%;
-      min-height:260px;
-    }
-
-    .event-image img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-    }
-
-    /* INFO DERECHA */
-    .event-info{
-      width:60%;
-      padding:30px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-    }
-
-    .badge{
-      display:inline-block;
-      background:#ffe2d1;
-      color:#FF5900;
-      padding:7px 14px;
-      border-radius:30px;
-      font-size:.85rem;
-      font-weight:bold;
-      margin-bottom:15px;
-      width:fit-content;
-    }
-
-    .event-info h3{
-      font-size:1.8rem;
-      margin-bottom:15px;
-    }
-
-    .info{
-      color:#555;
-      margin-bottom:8px;
-      font-size:1rem;
-    }
-
-    .description{
-      margin:18px 0;
-      line-height:1.6;
-      color:#444;
-    }
-
-    .bottom-row{
-      margin-top:10px;
-      display:flex;
-      justify-content:space-between;
-      align-items:center;
-      gap:20px;
-      flex-wrap:wrap;
-    }
-
-    .price{
-      font-size:1.8rem;
-      font-weight:bold;
-      color:#FF5900;
+    .info p{
+        font-size:20px;
     }
 
     .btn{
-      background:#FF5900;
-      color:white;
-      text-decoration:none;
-      padding:14px 24px;
-      border-radius:10px;
-      font-weight:bold;
-      transition:.3s;
+        font-size:22px;
+        padding:15px 35px;
     }
 
-    .btn:hover{
-      background:#d94c00;
+    .calendar{
+        padding:20px;
     }
 
-    footer{
-      margin-top:70px;
-      background:#1d1d1d;
-      color:white;
-      text-align:center;
-      padding:30px;
+    .day-link{
+        height:45px;
     }
+}
 
-    /* RESPONSIVE */
-    @media(max-width:900px){
-
-      .event-card{
-        flex-direction:column;
-      }
-
-      .event-image,
-      .event-info{
-        width:100%;
-      }
-
-      .event-image{
-        height:250px;
-      }
-
-      .event-info{
-        padding:25px;
-      }
-
-      .event-info h3{
-        font-size:1.5rem;
-      }
-
-      .logo{
-        width:110px;
-      }
-
-    }
-
-  </style>
-</head>
+</style>
 <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+</head>
 <body>
 
-  <header>
+<header>
 
-    <!-- LOGO -->
-    <img 
-      src="anahuac.jpg" 
-      alt="Logo"
-      class="logo"
-    >
+    <div class="logo">
+        BRILLA FEST
+    </div>
 
-    <h1>ANÁHUAC</h1>
+    <nav>
+        <a href="#">Precios</a>
+        <a href="#">Galería</a>
+        <a href="#">Calendario</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contacto</a>
+    </nav>
+
+</header>
+
+<section class="hero">
+
+    <div class="hero-content">
+        <h1>BRILLA FEST 2026</h1>
+        <p>Experiencia Familiar 2026</p>
+    </div>
+
+</section>
+
+<section class="info">
+
+    <h2>Winter Fest Puebla 2026</h2>
 
     <p>
-      Plataforma demo para registro de asistentes
-      y administración de eventos presenciales y virtuales.
+        Del 14 de noviembre al 03 de enero
     </p>
 
-  </header>
+    <a href="https://prueba.tuticket.com.mx/event/brilla-fest-1aypk9?recurrenceSelection=true" class="btn">
+        Comprar boletos
+    </a>
 
-  <div class="container">
+    <div class="calendar">
 
-    <h2 class="section-title">Próximos Eventos</h2>
+        <h3>Diciembre 2026</h3>
 
-    <div class="events-list">
+        <div class="calendar-grid">
 
-      <!-- EVENTO 1 -->
-      <div class="event-card">
+            <div class="day-name">L</div>
+            <div class="day-name">M</div>
+            <div class="day-name">M</div>
+            <div class="day-name">J</div>
+            <div class="day-name">V</div>
+            <div class="day-name">S</div>
+            <div class="day-name">D</div>
 
-        <div class="event-image">
-          <img src="carrera.jpg" alt="">
-        </div>
+            <div></div>
 
-        <div class="event-info">
+            <a href="" class="day-link">1</a>
+            <a href="" class="day-link">2</a>
+            <a href="" class="day-link">3</a>
+            <a href="" class="day-link">4</a>
+            <a href="" class="day-link">5</a>
+            <a href="" class="day-link">6</a>
 
-          <span class="badge">CARRERA</span>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-5ezvo0?useEmbed=true">7</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-8ui1n7?useEmbed=true">8</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-xr7q7m?useEmbed=true">9</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-mdp0l5?useEmbed=true">10</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-nrhqir?useEmbed=true">11</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-qyfjat?useEmbed=true">12</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-peluq7?useEmbed=true">13</a>
 
-          <h3>Carrera Anáhuac 2026</h3>
+            <a href="" class="day-link">14</a>
+            <a href="" class="day-link">15</a>
+            <a href="" class="day-link">16</a>
+            <a href="" class="day-link">17</a>
+            <a href="" class="day-link">18</a>
+            <a href="" class="day-link">19</a>
+            <a href="" class="day-link">20</a>
 
-          <p class="info">📅 15 Junio 2026</p>
-          <p class="info">🕒 6:00 PM</p>
-          <p class="info">📍 Puebla, México</p>
+            <a href="" class="day-link">21</a>
+            <a href="" class="day-link">22</a>
+            <a href="" class="day-link">23</a>
+            <a href="" class="day-link">24</a>
 
-          <p class="description">
-            Ven y vive la experiecnia de nuestar carrera Anáhuac 2026.
-          </p>
+            <a href="" class="day-link christmas">
+                25
+            </a>
 
-          <div class="bottom-row">
-            <div class="price">$149 MXN</div>
-            <a class="vivenu-btn yourStylingClass btn" href="https://prueba.tuticket.com.mx/event/carrera-anahuac-trbgk3?useEmbed=true">Comprar boleto</a>
-          </div>
+            <a href="" class="day-link">26</a>
+            <a href="" class="day-link">27</a>
+            <a href="" class="day-link">28</a>
+            <a href="" class="day-link">29</a>
+            <a href="" class="day-link">30</a>
 
-        </div>
-
-      </div>
-
-      <!-- EVENTO 2 -->
-      <div class="event-card">
-
-        <div class="event-image">
-          <img src="con.jpg" alt="">
-        </div>
-
-        <div class="event-info">
-
-          <span class="badge">CONFERENCIA</span>
-
-          <h3>Marketing Digital para Empresas</h3>
-
-          <p class="info">📅 22 Junio 2026</p>
-          <p class="info">🕒 7:30 PM</p>
-          <p class="info">💻 Evento Presencial</p>
-
-          <p class="description">
-            Aprende estrategias de marketing digital,
-            automatización y posicionamiento de marca
-            para aumentar conversiones.
-          </p>
-
-          <div class="bottom-row">
-            <div class="price">$99 MXN</div>
-            <a class="vivenu-btn yourStylingClass btn" href="https://prueba.tuticket.com.mx/event/marketing-digital-para-empresas-dxbpsa?useEmbed=true">Reservar acceso</a>
-          </div>
+            <a href="" class="day-link newyear">
+                31
+            </a>
 
         </div>
 
-      </div>
-
-      <!-- EVENTO 3 -->
-      <div class="event-card">
-
-        <div class="event-image">
-          <img src="dia.jpg" alt="">
+        <div class="legend">
+            🎄 <strong>25 de diciembre</strong> - Navidad<br>
+            ✨ <strong>31 de diciembre</strong> - Celebración de Fin de Año
         </div>
-
-        <div class="event-info">
-
-          <span class="badge">DIA ANAHUAC</span>
-
-          <h3>Ven y vive el primer gran día</h3>
-
-          <p class="info">📅 30 Junio 2026</p>
-          <p class="info">🕒 5:00 PM</p>
-          <p class="info">📍 Centro de Convenciones</p>
-
-          <p class="description">
-            Conecta con empresarios, inversionistas y líderes
-            de distintas industrias en una experiencia premium
-            de networking.
-          </p>
-
-          <div class="bottom-row">
-            <div class="price">$270 MXN</div>
-            <a class="vivenu-btn yourStylingClass btn" href="https://prueba.tuticket.com.mx/event/prueba-bandra-5z2jv0?useEmbed=true">Adquirir boleto</a>
-          </div>
-
-        </div>
-
-      </div>
 
     </div>
 
-  </div>
-
-  <footer>
-    Demo de Sistema de Boletaje © 2026
-  </footer>
+</section>
 
 </body>
 </html>
