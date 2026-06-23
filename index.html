@@ -37,16 +37,17 @@ header{
     box-shadow:0 2px 5px rgba(0,0,0,.08);
 }
 
+/* Logo */
 .logo{
-    font-size:28px;
-    font-weight:900;
-    color:#0d2c63;
+    background:darkblue;
+    display:flex;
+    align-items:center;
 }
 
-.logo span{
+.logo img{
+    height:80px;
+    width:auto;
     display:block;
-    font-size:14px;
-    color:#555;
 }
 
 nav ul{
@@ -87,6 +88,7 @@ nav a{
     margin-bottom:25px;
 }
 
+/* Botones */
 .btn{
     display:inline-block;
     background:#1438ff;
@@ -102,7 +104,7 @@ nav a{
     background:#0d2c63;
 }
 
-/* Sección */
+/* Títulos */
 .section-title{
     text-align:center;
     margin:60px 0 40px;
@@ -183,6 +185,11 @@ nav a{
     padding:12px 25px;
     border-radius:5px;
     font-weight:bold;
+    transition:.3s;
+}
+
+.buy-btn:hover{
+    background:#0d2c63;
 }
 
 /* Footer */
@@ -201,6 +208,10 @@ footer{
         padding:20px;
     }
 
+    .logo img{
+        height:60px;
+    }
+
     nav ul{
         flex-wrap:wrap;
         justify-content:center;
@@ -213,11 +224,12 @@ footer{
     .hero-content p{
         font-size:18px;
     }
-
 }
 </style>
 </head>
+
 <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+
 <body>
 
 <div class="top-bar">
@@ -225,9 +237,10 @@ footer{
 </div>
 
 <header>
+
+    <!-- LOGO -->
     <div class="logo">
-        TICKETPRO
-        <span>Concert Series</span>
+        <img src="vi.png" alt="TicketPro">
     </div>
 
     <nav>
@@ -238,6 +251,7 @@ footer{
             <li><a href="#">Contacto</a></li>
         </ul>
     </nav>
+
 </header>
 
 <section class="hero">
@@ -252,7 +266,7 @@ footer{
 <section class="events">
 
     <div class="card">
-        <img src="images.jpg" alt="Artista">
+        <img src="images.jpg" alt="Robbie Williams">
 
         <div class="card-content">
             <span class="badge">Preventa Exclusiva</span>
@@ -273,12 +287,15 @@ footer{
                 del año.
             </p>
 
-            <a class="vivenu-btn yourStylingClass buy-btn" href="https://tickets.payuticket.com/event/robbie-williams-de1z08?useEmbed=true">Comprar Boletos</a>
+            <a class="vivenu-btn buy-btn"
+               href="https://tickets.payuticket.com/event/robbie-williams-de1z08?useEmbed=true">
+                Comprar Boletos
+            </a>
         </div>
     </div>
 
     <div class="card">
-        <img src="marron.jpg" alt="Banda">
+        <img src="marron.jpg" alt="Maroon 5">
 
         <div class="card-content">
             <span class="badge" style="background:#22c55e;">
@@ -300,7 +317,10 @@ footer{
                 bandas más exitosas del pop rock internacional.
             </p>
 
-            <a class="vivenu-btn yourStylingClass buy-btn" href="https://tickets.payuticket.com/event/marron-5-6dlp5c?useEmbed=true">Comprar Boletos</a>
+            <a class="vivenu-btn buy-btn"
+               href="https://tickets.payuticket.com/event/marron-5-6dlp5c?useEmbed=true">
+                Comprar Boletos
+            </a>
         </div>
     </div>
 
