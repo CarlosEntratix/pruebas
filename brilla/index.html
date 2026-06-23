@@ -1,314 +1,325 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Brilla Fest Atlixco 2025</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background-color: #9c45a4;
-      color: #333;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BRILLA FEST</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background:#65107a;
+    color:white;
+}
+
+header{
+    background:#7a1b8a;
+    padding:20px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 15px;
+    font-size:14px;
+}
+
+.hero{
+    height:320px;
+    background:url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?q=80&w=1600') center/cover no-repeat;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:rgba(0,0,0,.45);
+}
+
+.hero-content{
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    text-align:center;
+}
+
+.hero-content h1{
+    font-size:60px;
+    margin-bottom:10px;
+}
+
+.hero-content p{
+    font-size:22px;
+}
+
+.info{
+    background:#6a137d;
+    text-align:center;
+    padding:60px 20px;
+}
+
+.info h2{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.info p{
+    font-size:24px;
+    margin-bottom:30px;
+}
+
+.btn{
+    display:inline-block;
+    background:#f5c028;
+    color:#000;
+    text-decoration:none;
+    font-size:28px;
+    font-weight:bold;
+    padding:20px 50px;
+    border-radius:50px;
+    transition:.3s;
+}
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* CALENDARIO */
+
+.calendar{
+    max-width:700px;
+    margin:50px auto 0;
+    background:rgba(255,255,255,.08);
+    padding:30px;
+    border-radius:25px;
+}
+
+.calendar h3{
+    color:#f5c028;
+    font-size:32px;
+    margin-bottom:25px;
+}
+
+.calendar-grid{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:10px;
+}
+
+.day-name{
+    text-align:center;
+    font-weight:bold;
+    color:#f5c028;
+    padding:10px 0;
+}
+
+.day-link{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:55px;
+    text-decoration:none;
+    color:white;
+    background:rgba(255,255,255,.12);
+    border-radius:12px;
+    transition:.3s;
+    font-size:16px;
+}
+
+.day-link:hover{
+    background:#f5c028;
+    color:black;
+    transform:scale(1.08);
+}
+
+.christmas{
+    background:#f5c028;
+    color:black;
+    font-weight:bold;
+}
+
+.newyear{
+    background:#00d084;
+    color:black;
+    font-weight:bold;
+}
+
+.legend{
+    margin-top:20px;
+    font-size:15px;
+    line-height:1.8;
+}
+
+@media(max-width:768px){
+
+    header{
+        justify-content:center;
+        text-align:center;
     }
 
-    header {
-      background-color: #720a76;
-      color: white;
-      padding: 1rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
+    nav{
+        margin-top:15px;
     }
 
-    .logo {
-      max-height: 100px;
+    nav a{
+        display:inline-block;
+        margin:8px;
     }
 
-    .header-text {
-      flex: 1;
-      text-align: center;
+    .hero-content h1{
+        font-size:40px;
     }
 
-    nav {
-      background-color: #410156;
-      padding: 0.5rem;
-      text-align: center;
+    .info h2{
+        font-size:32px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
+    .info p{
+        font-size:20px;
     }
 
-    .hero {
-      padding: 0;
-      margin: 0;
-      width: 100vw;
-      overflow: hidden;
+    .btn{
+        font-size:22px;
+        padding:15px 35px;
     }
 
-    .hero img {
-      width: 100vw;
-      height: auto;
-      display: block;
-      border-radius: 0;
+    .calendar{
+        padding:20px;
     }
 
-    .container {
-      max-width: 900px;
-      margin: 2rem auto;
-      background: white;
-      padding: 1.5rem;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    .day-link{
+        height:45px;
     }
+}
 
-    h2 {
-      color: #e6ca5e;
-    }
-
-    section {
-      margin-bottom: 2rem;
-    }
-
-    footer {
-      background-color: #410156;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: center;
-      margin-top: 1rem;
-    }
-
-    th, td {
-      padding: 0.5rem;
-      border: 1px solid #ccc;
-    }
-
-    th {
-      background-color: #e6ca5e;
-      color: #333;
-    }
-
-    .activo {
-      background-color: #e6ca5e;
-      font-weight: bold;
-    }
-  </style>
-  <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+</style>
+<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 </head>
 <body>
 
-  <header>
-    <img src="brilla.jpeg" alt="Brilla Fest Logo" class="logo">
-    <div class="header-text">
-      <h1>Brilla Fest Atlixco 2025</h1>
-      <p>Del 15 de noviembre al 30 de diciembre</p>
+<header>
+
+    <div class="logo">
+        BRILLA FEST
     </div>
-  </header>
 
-  <nav>
-    <a href="#precios">Precios</a>
-    <a href="#atracciones">Atracciones</a>
-    <a href="#ubicacion">Ubicación</a>
-    <a href="#calendario">Calendario</a>
-  </nav>
+    <nav>
+        <a href="#">Precios</a>
+        <a href="#">Galería</a>
+        <a href="#">Calendario</a>
+        <a href="#">FAQ</a>
+        <a href="#">Contacto</a>
+    </nav>
 
-  <div class="hero">
-    <img src="Bri.jpg" alt="Imagen principal del festival">
-  </div>
+</header>
 
-  <div class="container">
-    <section id="precios">
-      <h2>Precios</h2>
-      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-        <ul style="margin: 0;">
-          <li>
-            General: $220
-            <ul>
-              <li>ENTRADA A BRILLA</li>
-              <li>MAGIA EN EL AIRE</li>
-              <li>BRILLA BAND</li>
-            </ul>
-          </li>
-          <li>
-            Clásica: $495
-            <ul>
-              <li>ENTRADA A BRILLA</li>
-              <li>MAGIA EN EL AIRE</li>
-              <li>BRILLA BAND</li>
-              <li>COCINA DE LA SRA. CLAUS</li>
-              <li>NAVIDAD PSICODELICA</li>
-            </ul>
-          </li>
-          <li>
-            Especial: $660
-            <ul>
-              <li>ENTRADA A BRILLA</li>
-              <li>MAGIA EN EL AIRE</li>
-              <li>BRILLA BAND</li>
-              <li>COCINA DE LA SRA. CLAUS</li>
-              <li>NAVIDAD PSICODELICA</li>
-              <li>TUNEL GIRATORIO</li>
-              <li>TUNEL</li>
-            </ul>
-          </li>
-          <li>
-            VIP: $1,100
-            <ul>
-              <li>ENTRADA A BRILLA</li>
-              <li>MAGIA EN EL AIRE</li>
-              <li>BRILLA BAND</li>
-              <li>COCINA DE LA SRA. CLAUS</li>
-              <li>NAVIDAD PSICODELICA</li>
-              <li>TUNEL GIRATORIO</li>
-              <li>TUNEL</li>
-              <li>BOSQUE MAGICO 3D</li>
-              <li>TREN</li>
-            </ul>
-          </li>
-        </ul>
+<section class="hero">
 
-        <a href="https://prueba.tuticket.com.mx/event/brilla-fest-sq3i9f?recurrenceSelection=true"
-           target="_blank" 
-           rel="noopener" 
-           style="
-             display: inline-block;
-             padding: 0.75rem 1.5rem;
-             background-color: #e6ca5e;
-             color: #333;
-             font-weight: bold;
-             font-size: 1rem;
-             border: none;
-             border-radius: 8px;
-             text-decoration: none;
-             text-align: center;
-             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-             transition: all 0.3s ease;
-             white-space: nowrap;
-           ">
-           Comprar Boletos
-        </a>
-      </div>
-    </section>
+    <div class="hero-content">
+        <h1>BRILLA FEST 2026</h1>
+        <p>Experiencia Familiar 2026</p>
+    </div>
 
-    <section id="atracciones">
-      <h2>Atracciones principales</h2>
-      <ul>
-        <li>Gran Desfile de Nikolaus</li>
-        <li>Túnel de luces</li>
-        <li>Tren navideño</li>
-        <li>Bosque mágico 3D</li>
-        <li>Mercado navideño</li>
-        <li>Show de luces y color</li>
-      </ul>
-    </section>
+</section>
 
-    <section id="ubicacion">
-      <h2>Ubicación</h2>
-      <p>Xtremo Parque, Aeródromo de Atlixco, Calle 6 Sur 1406, Atlixco, Puebla</p>
-    </section>
+<section class="info">
 
-    <section id="calendario">
-      <h2>Calendario del Evento</h2>
-      <p>Brilla Fest estará abierto del <strong>15 de noviembre</strong> al <strong>30 de diciembre de 2025</strong>.</p>
-      
-      <table>
-        <thead>
-          <tr>
-            <th>Dom</th>
-            <th>Lun</th>
-            <th>Mar</th>
-            <th>Mié</th>
-            <th>Jue</th>
-            <th>Vie</th>
-            <th>Sáb</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>9</td>
-            <td>10</td>
-            <td>11</td>
-            <td>12</td>
-            <td>13</td>
-            <td>14</td>
-	    <td>15</td>
-            
-</td>
-          </tr>
-          <tr>
-            <td>16</td>
-            <td class="activo"><a href="https://prueba.tuticket.com.mx/event/brilla-fest-m2v1zy?useEmbed=true"
-            target="_blank" 
-            rel="noopener" 
-            style="
-             display: inline-block;
-             background-color: #e6ca5e;
-             color: #333;
-             font-weight: bold;
-             font-size: 1rem;
-             border: none;
-             border-radius: 8px;
-             text-decoration: none;
-             text-align: center;
-             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-             transition: all 0.3s ease;
-             white-space: nowrap;
-             ">17</a></td>
-            <td style="background-color: blue;"><a href="https://prueba.tuticket.com.mx/event/brilla-fest-krmdaz?useEmbed=true"
-            target="_blank" 
-            rel="noopener" 
-            style="
-             display: inline-block;
-             background-color: #e6ca5e;
-             color: #333;
-             font-weight: bold;
-             font-size: 1rem;
-             border: none;
-             border-radius: 8px;
-             text-decoration: none;
-             text-align: center;
-             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-             transition: all 0.3s ease;
-             white-space: nowrap;
-             ">18</a></td>
-            <td>19</td>
-            <td>20</td>
-            <td>21</td>
-            <td>22</td>
-          </tr>
-          <tr>
-            <td>23</td>
-            <td>24</td>
-            <td>25</td>
-            <td>26</td>
-            <td>27</td>
-            <td>28</td>
-            <td>29</td>
-          </tr>
-          <tr>
-            <td>30</td>
-            <td>1 Dic</td>
-            <td>2</td>
-            <td>3</td>
-            <td>4</td>
-            <td>5</td>
-            <td>6</td>
-          </tr>
-          <!-- Puedes seguir extendiendo hasta el 30 de diciembre -->
-        </tbody>
-      </table>
+    <h2>Winter Fest Puebla 2026</h2>
 
-      <p style="margin-top: 1rem;"><em>Consulta nuestras redes para conocer los días especiales y horarios extendidos.</em></p>
-    </section>
-  </div>
+    <p>
+        Del 14 de noviembre al 03 de enero
+    </p>
 
- 
+    <a href="https://prueba.tuticket.com.mx/event/brilla-fest-1aypk9?recurrenceSelection=true" class="btn">
+        Comprar boletos
+    </a>
+
+    <div class="calendar">
+
+        <h3>Diciembre 2026</h3>
+
+        <div class="calendar-grid">
+
+            <div class="day-name">L</div>
+            <div class="day-name">M</div>
+            <div class="day-name">M</div>
+            <div class="day-name">J</div>
+            <div class="day-name">V</div>
+            <div class="day-name">S</div>
+            <div class="day-name">D</div>
+
+            <div></div>
+
+            <a href="" class="day-link">1</a>
+            <a href="" class="day-link">2</a>
+            <a href="" class="day-link">3</a>
+            <a href="" class="day-link">4</a>
+            <a href="" class="day-link">5</a>
+            <a href="" class="day-link">6</a>
+
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-5ezvo0?useEmbed=true">7</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-8ui1n7?useEmbed=true">8</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-xr7q7m?useEmbed=true">9</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-mdp0l5?useEmbed=true">10</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-nrhqir?useEmbed=true">11</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-qyfjat?useEmbed=true">12</a>
+            <a class="vivenu-btn yourStylingClass day-link" href="https://prueba.tuticket.com.mx/checkout/brilla-fest-peluq7?useEmbed=true">13</a>
+
+            <a href="" class="day-link">14</a>
+            <a href="" class="day-link">15</a>
+            <a href="" class="day-link">16</a>
+            <a href="" class="day-link">17</a>
+            <a href="" class="day-link">18</a>
+            <a href="" class="day-link">19</a>
+            <a href="" class="day-link">20</a>
+
+            <a href="" class="day-link">21</a>
+            <a href="" class="day-link">22</a>
+            <a href="" class="day-link">23</a>
+            <a href="" class="day-link">24</a>
+
+            <a href="" class="day-link christmas">
+                25
+            </a>
+
+            <a href="" class="day-link">26</a>
+            <a href="" class="day-link">27</a>
+            <a href="" class="day-link">28</a>
+            <a href="" class="day-link">29</a>
+            <a href="" class="day-link">30</a>
+
+            <a href="" class="day-link newyear">
+                31
+            </a>
+
+        </div>
+
+        <div class="legend">
+            🎄 <strong>25 de diciembre</strong> - Navidad<br>
+            ✨ <strong>31 de diciembre</strong> - Celebración de Fin de Año
+        </div>
+
+    </div>
+
+</section>
+
+</body>
+</html>
