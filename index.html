@@ -1,411 +1,1471 @@
-    <!DOCTYPE html>
-    <html lang="es">
-    <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Run Events | Venta de Boletos</title>
+<!DOCTYPE html>
+<html lang="es">
 
-    <style>
+<head>
 
-    *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        font-family:Arial, Helvetica, sans-serif;
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Experiencia | Demo Boletera</title>
+
+
+  <!-- FUENTES -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <style>
+
+    :root {
+      --black: #151515;
+      --cream: #f4f1e9;
+      --white: #ffffff;
+      --orange: #e86f32;
+      --orange-dark: #c95420;
+      --gray: #777777;
+      --light-gray: #e5e2da;
     }
 
-    body{
-        background:#f4f4f4;
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    /* NAVBAR */
 
-    header{
-        background:#111;
-        color:white;
-        padding:18px 60px;
-
-        display:flex;
-        justify-content:space-between;
-        align-items:center;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .logo{
-        font-size:28px;
-        font-weight:bold;
-        color:#fff;
+
+    body {
+      background: var(--cream);
+      color: var(--black);
+      font-family: "Montserrat", sans-serif;
     }
 
-    nav a{
-        color:white;
-        text-decoration:none;
-        margin-left:30px;
-        transition:.3s;
+
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    nav a:hover{
-        color:#00A8FF;
+
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      width: 100%;
+      background: var(--white);
+      border-bottom: 1px solid rgba(0, 0, 0, .08);
+
+      position: sticky;
+      top: 0;
+      z-index: 100;
     }
 
-    /* HERO */
 
-    .hero{
+    .nav {
+      max-width: 1280px;
+      height: 82px;
+      margin: auto;
+      padding: 0 32px;
 
-        height:420px;
-
-        background:
-        linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),
-        url("https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=1600&q=80");
-
-        background-size:cover;
-        background-position:center;
-
-        display:flex;
-        justify-content:center;
-        align-items:center;
-
-        text-align:center;
-        color:white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
 
-    .hero h1{
 
-        font-size:55px;
-        margin-bottom:20px;
+    .logo {
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -1px;
     }
 
-    .hero p{
 
-        font-size:20px;
-        margin-bottom:30px;
+    .logo span {
+      color: var(--orange);
     }
 
-    .hero button{
 
-        background:#0066ff;
-        color:white;
-        border:none;
-        padding:16px 40px;
-        font-size:18px;
-        border-radius:40px;
-        cursor:pointer;
-        transition:.3s;
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+
+      font-size: 13px;
+      font-weight: 600;
     }
 
-    .hero button:hover{
 
-        background:#0049c6;
+    .menu a {
+      position: relative;
+      padding: 8px 0;
     }
 
-    /* EVENTOS */
 
-    .section{
+    .menu a::after {
+      content: "";
 
-        width:90%;
-        max-width:1300px;
-        margin:auto;
-        padding:60px 0;
+      position: absolute;
+      left: 0;
+      bottom: 0;
+
+      width: 0;
+      height: 2px;
+
+      background: var(--orange);
+
+      transition: .25s ease;
     }
 
-    .section h2{
 
-        text-align:center;
-        margin-bottom:45px;
-        font-size:36px;
-        color:#222;
+    .menu a:hover::after,
+    .menu a.active::after {
+      width: 100%;
     }
 
-    .cards{
 
-        display:grid;
-        grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-        gap:25px;
+    .menu-button {
+      display: none;
+      font-size: 24px;
+      cursor: pointer;
     }
 
-    .card{
 
-        background:white;
-        border-radius:14px;
-        overflow:hidden;
-        box-shadow:0 10px 30px rgba(0,0,0,.1);
-        transition:.3s;
+
+    /* =========================
+       HERO
+    ========================== */
+
+    .hero {
+
+      min-height: 480px;
+
+      background:
+        linear-gradient(
+          rgba(0, 0, 0, .48),
+          rgba(0, 0, 0, .58)
+        ),
+
+        url("Cinedot.jpg");
+
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      color: white;
+
+      padding: 70px 20px;
     }
 
-    .card:hover{
 
-        transform:translateY(-8px);
+    .hero-content {
+      max-width: 850px;
     }
 
-    .card img{
 
-        width:100%;
-        height:220px;
-        object-fit:cover;
+    .eyebrow {
+
+      font-size: 12px;
+
+      text-transform: uppercase;
+
+      letter-spacing: 4px;
+
+      font-weight: 600;
+
+      margin-bottom: 20px;
+
+      color: #f1a16f;
     }
 
-    .info{
 
-        padding:25px;
+    .hero h1 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(48px, 7vw, 86px);
+
+      line-height: .95;
+
+      font-weight: 500;
+
+      margin-bottom: 28px;
     }
 
-    .info h3{
 
-        margin-bottom:15px;
-        color:#111;
+    .hero p {
+
+      max-width: 650px;
+
+      margin: auto;
+
+      line-height: 1.8;
+
+      font-size: 15px;
+
+      color: rgba(255,255,255,.85);
     }
 
-    .fecha{
 
-        color:#0066ff;
-        font-weight:bold;
-        margin-bottom:10px;
+
+    /* =========================
+       EXPERIENCE BAR
+    ========================== */
+
+    .experience-bar {
+
+      max-width: 1100px;
+
+      margin: -38px auto 0;
+
+      position: relative;
+
+      z-index: 2;
+
+      background: white;
+
+      padding: 18px;
+
+      display: flex;
+
+      gap: 10px;
+
+      box-shadow:
+        0 15px 45px rgba(0,0,0,.12);
     }
 
-    .lugar{
 
-        color:#666;
-        margin-bottom:20px;
+    .experience-bar a {
+
+      flex: 1;
+
+      text-align: center;
+
+      padding: 17px 15px;
+
+      font-size: 12px;
+
+      font-weight: 600;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      transition: .25s ease;
     }
 
-    .precio{
 
-        font-size:28px;
-        color:#111;
-        margin-bottom:25px;
+    .experience-bar a:hover,
+    .experience-bar a.active {
+
+      background: var(--black);
+
+      color: white;
     }
 
-    button.compra{
 
-        width:100%;
-        padding:14px;
-        border:none;
-        background:#0066ff;
-        color:white;
-        border-radius:8px;
-        cursor:pointer;
-        font-size:16px;
+
+    /* =========================
+       CALENDAR SECTION
+    ========================== */
+
+    .calendar-section {
+
+      max-width: 1100px;
+
+      margin: 100px auto;
+
+      padding: 0 25px;
     }
 
-    button.compra:hover{
 
-        background:#0049c6;
+    .section-title {
+
+      text-align: center;
+
+      margin-bottom: 50px;
     }
 
-    /* Botones Vivenu */
 
-.vivenu-btn{
-    display:block;
-    width:100%;
-    padding:14px;
-    background:#0066ff;
-    color:#fff !important;
-    text-decoration:none;
-    text-align:center;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    transition:all .3s ease;
-    box-shadow:0 4px 12px rgba(0,102,255,.25);
-}
+    .section-title span {
 
-.vivenu-btn:hover{
-    background:#0049c6;
-    transform:translateY(-2px);
-    box-shadow:0 8px 20px rgba(0,102,255,.35);
-}
+      color: var(--orange);
 
-.vivenu-btn:active{
-    transform:translateY(0);
-    box-shadow:0 3px 8px rgba(0,102,255,.25);
-}
+      text-transform: uppercase;
 
-    /* PATROCINADORES */
+      font-size: 11px;
 
-    .sponsors{
+      font-weight: 700;
 
-        background:#111;
-        color:white;
-        padding:50px;
-        text-align:center;
+      letter-spacing: 3px;
     }
 
-    .logos{
 
-        display:flex;
-        justify-content:center;
-        gap:50px;
-        margin-top:25px;
-        flex-wrap:wrap;
+    .section-title h2 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: clamp(38px, 5vw, 58px);
+
+      font-weight: 500;
+
+      margin-top: 12px;
     }
 
-    .logo-box{
 
-        border:1px solid #444;
-        padding:20px 35px;
-        border-radius:10px;
-        font-size:22px;
-        color:#ddd;
+    .section-title p {
+
+      color: var(--gray);
+
+      max-width: 620px;
+
+      margin: 15px auto 0;
+
+      font-size: 14px;
+
+      line-height: 1.8;
     }
 
-    /* FOOTER */
 
-    footer{
 
-        background:#000;
-        color:#aaa;
-        text-align:center;
-        padding:25px;
+    /* =========================
+       CALENDAR
+    ========================== */
+
+    .calendar {
+
+      background: white;
+
+      padding: 35px;
+
+      box-shadow:
+        0 12px 35px rgba(0,0,0,.07);
     }
 
-    </style>
-    <script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
-    </head>
-    <body>
 
-    <header>
+    .calendar-header {
 
-    <div class="logo">
-    HUB SPORTS
-    </div>
+      display: flex;
 
-    <nav>
+      align-items: center;
 
-    <a href="#">Inicio</a>
-    <a href="#">Eventos</a>
-    <a href="#">Boletos</a>
-    <a href="#">Contacto</a>
+      justify-content: space-between;
+
+      margin-bottom: 35px;
+    }
+
+
+    .calendar-header h3 {
+
+      font-family: "Playfair Display", serif;
+
+      font-size: 30px;
+
+      font-weight: 500;
+
+      text-transform: capitalize;
+    }
+
+
+    .month-controls {
+
+      display: flex;
+
+      gap: 8px;
+    }
+
+
+    .month-controls a {
+
+      width: 42px;
+
+      height: 42px;
+
+      border: 1px solid var(--light-gray);
+
+      display: flex;
+
+      align-items: center;
+
+      justify-content: center;
+
+      transition: .2s;
+
+      font-size: 18px;
+    }
+
+
+    .month-controls a:hover {
+
+      background: var(--black);
+
+      color: white;
+    }
+
+
+
+    /* =========================
+       WEEKDAYS
+    ========================== */
+
+    .weekdays,
+    .days {
+
+      display: grid;
+
+      grid-template-columns:
+        repeat(7, 1fr);
+    }
+
+
+    .weekdays {
+
+      margin-bottom: 8px;
+    }
+
+
+    .weekday {
+
+      text-align: center;
+
+      color: var(--gray);
+
+      font-size: 10px;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: 1px;
+
+      padding: 12px 0;
+    }
+
+
+
+    /* =========================
+       DAY
+    ========================== */
+
+    .day {
+
+      min-height: 115px;
+
+      border: 1px solid var(--light-gray);
+
+      margin: -1px 0 0 -1px;
+
+      position: relative;
+
+      padding: 12px;
+
+      transition: .2s ease;
+
+      background: white;
+    }
+
+
+    .day.empty {
+
+      background: #faf9f5;
+    }
+
+
+    .day-number {
+
+      display: block;
+
+      font-size: 13px;
+
+      font-weight: 600;
+
+      margin-bottom: 15px;
+    }
+
+
+    .day.available:hover {
+
+      background: #fff8f3;
+
+      z-index: 2;
+    }
+
+
+
+    /* =========================
+       TICKET LINK
+       
+       IMPORTANTE:
+       ESTO ES UN <a>
+    ========================== */
+
+    .vivenu-btn {
+
+      display: block;
+
+      width: 100%;
+
+      padding: 10px 6px;
+
+      background: var(--black);
+
+      color: white;
+
+      border: none;
+
+      text-align: center;
+
+      font-family: "Montserrat", sans-serif;
+
+      font-size: 8px;
+
+      line-height: 1.3;
+
+      font-weight: 700;
+
+      text-transform: uppercase;
+
+      letter-spacing: .5px;
+
+      transition:
+        background .25s ease,
+        transform .25s ease;
+    }
+
+
+    .vivenu-btn:hover {
+
+      background: var(--orange);
+
+      color: white;
+
+      transform: translateY(-1px);
+    }
+
+
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+
+      background: var(--black);
+
+      color: white;
+
+      border-top:
+        1px solid rgba(255,255,255,.1);
+
+      padding: 35px 25px;
+    }
+
+
+    .footer-content {
+
+      max-width: 1100px;
+
+      margin: auto;
+
+      display: flex;
+
+      justify-content: space-between;
+
+      gap: 30px;
+    }
+
+
+    .footer-logo {
+
+      font-family:
+        "Playfair Display", serif;
+
+      font-size: 25px;
+    }
+
+
+    .footer-info {
+
+      text-align: right;
+
+      color:
+        rgba(255,255,255,.6);
+
+      font-size: 11px;
+
+      line-height: 1.8;
+    }
+
+
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media (max-width: 800px) {
+
+      .nav {
+        height: 70px;
+      }
+
+
+      .menu {
+        display: none;
+      }
+
+
+      .menu-button {
+        display: block;
+      }
+
+
+      .experience-bar {
+
+        margin-left: 15px;
+
+        margin-right: 15px;
+
+        overflow-x: auto;
+      }
+
+
+      .experience-bar a {
+
+        min-width: 150px;
+      }
+
+
+      .calendar {
+
+        padding: 15px;
+      }
+
+
+      .calendar-header {
+
+        margin-bottom: 20px;
+      }
+
+
+      .calendar-header h3 {
+
+        font-size: 23px;
+      }
+
+
+      .day {
+
+        min-height: 95px;
+
+        padding: 8px;
+      }
+
+
+      .day-number {
+
+        font-size: 11px;
+
+        margin-bottom: 10px;
+      }
+
+
+      .vivenu-btn {
+
+        font-size: 7px;
+
+        padding: 8px 3px;
+      }
+
+
+      .weekday {
+
+        font-size: 8px;
+      }
+
+
+      .footer-content {
+
+        flex-direction: column;
+      }
+
+
+      .footer-info {
+
+        text-align: left;
+      }
+
+    }
+
+
+
+    @media (max-width: 500px) {
+
+      .hero {
+
+        min-height: 380px;
+      }
+
+
+      .calendar-section {
+
+        margin: 70px auto;
+      }
+
+
+      .day {
+
+        min-height: 85px;
+      }
+
+
+      .day-number {
+
+        font-size: 10px;
+      }
+
+
+      .vivenu-btn {
+
+        font-size: 6px;
+
+        padding: 7px 2px;
+      }
+
+    }
+
+  </style>
+
+</head>
+
+<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+
+<body>
+
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header>
+
+    <nav class="nav">
+
+
+      <a
+        href="#"
+        class="logo"
+      >
+
+        Tolzú<span>.</span>
+
+      </a>
+
+
+      <div class="menu">
+
+
+        <a href="#">
+          Somos Tolzú
+        </a>
+
+
+        <a href="#">
+          Agenda
+        </a>
+
+
+        <a
+          href="#"
+          class="active"
+        >
+          Experiencia
+        </a>
+
+
+        <a href="#">
+          Mi visita
+        </a>
+
+
+        <a href="#">
+          Galería
+        </a>
+
+
+      </div>
+
+
+      <div class="menu-button">
+
+        ☰
+
+      </div>
+
 
     </nav>
 
-    </header>
+  </header>
 
-    <section class="hero">
 
-    <div>
 
-    <h1>Corre tu próxima meta</h1>
+  <!-- =========================
+       HERO
+  ========================== -->
 
-    <p>Compra tus boletos para las mejores carreras del año.</p>
+  <section class="hero">
+
+
+    <div class="hero-content">
+
+
+      <div class="eyebrow">
+
+        Experiencia Tolzú
+
+      </div>
+
+
+      <h1>
+
+        Vive la experiencia
+
+      </h1>
+
+
+      <p>
+
+        Selecciona una fecha para consultar
+        la disponibilidad de tu visita.
+
+      </p>
+
 
     </div>
+
+
+  </section>
+
+
+
+  <!-- =========================
+       EXPERIENCE BAR
+  ========================== -->
+
+  <div class="experience-bar">
+
+
+    <a
+      href="#"
+      class="active"
+    >
+      Cinedot
+    </a>
+
+
+    <a href="https://prueba.tuticket.com.mx/event/museo-tolzo-gocwsf?eventId=6a83b137c31fc9e0807db792?recurrenceSelection=true">
+      Museo
+    </a>
+
+
+    <a href="#">
+      Xkala
+    </a>
+
+
+    <a href="#">
+      Eventos
+    </a>
+
+
+  </div>
+
+
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+
+  <main>
+
+
+    <section class="calendar-section">
+
+
+      <div class="section-title">
+
+
+        <span>
+          Reserva tu visita
+        </span>
+
+
+        <h2>
+          Elige tu fecha
+        </h2>
+
+
+        <p>
+          Selecciona el día en el que quieres
+          vivir la experiencia.
+        </p>
+
+
+      </div>
+
+
+
+      <!-- CALENDARIO -->
+
+      <div class="calendar">
+
+
+        <div class="calendar-header">
+
+
+          <h3 id="monthTitle">
+            Agosto 2026
+          </h3>
+
+
+          <div class="month-controls">
+
+
+            <a
+              href="#"
+              id="prevMonth"
+              aria-label="Mes anterior"
+            >
+              ←
+            </a>
+
+
+            <a
+              href="#"
+              id="nextMonth"
+              aria-label="Mes siguiente"
+            >
+              →
+            </a>
+
+
+          </div>
+
+
+        </div>
+
+
+
+        <!-- DÍAS DE LA SEMANA -->
+
+        <div class="weekdays">
+
+          <div class="weekday">
+            Dom
+          </div>
+
+          <div class="weekday">
+            Lun
+          </div>
+
+          <div class="weekday">
+            Mar
+          </div>
+
+          <div class="weekday">
+            Mié
+          </div>
+
+          <div class="weekday">
+            Jue
+          </div>
+
+          <div class="weekday">
+            Vie
+          </div>
+
+          <div class="weekday">
+            Sáb
+          </div>
+
+        </div>
+
+
+
+        <!-- DÍAS -->
+
+        <div
+          class="days"
+          id="calendarDays"
+        ></div>
+
+
+      </div>
+
 
     </section>
 
-    <section class="section">
 
-    <h2>Próximos Eventos</h2>
+  </main>
 
-    <div class="cards">
 
-    <div class="card">
 
-    <img src="1.jpg">
+  <!-- =========================
+       FOOTER
+  ========================== -->
 
-    <div class="info">
+  <footer>
 
-    <h3>Adidas HUB TRAIL 12K/22K, La primavera, GDL</h3>
 
-    <div class="fecha">
-    09/08/2026
-    </div>
+    <div class="footer-content">
 
-    <div class="lugar">
-    Guadalajara, Jalisco
-    </div>
 
-    <div class="precio">
-    $550 MXN
-    </div>
+      <div class="footer-logo">
 
-    <a class="vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/run-the-circuit-m7ybro?useEmbed=true">COMPRAR BOLETOS</a>
+        Tolzú<span
+          style="color:#e86f32;"
+        >.</span>
 
-    </div>
+      </div>
 
-    </div>
 
-    <div class="card">
+      <div class="footer-info">
 
-    <img src="2.jpg">
+        Av. Miguel Hidalgo Ote. 201,
+        Col. Santa Clara<br>
 
-    <div class="info">
+        Toluca, Estado de México<br>
 
-    <h3>RUN THE CIRCUIT</h3>
+        722 213 48 93
 
-    <div class="fecha">
-    17/10/2026
-    </div>
+      </div>
 
-    <div class="lugar">
-    Bosque La Primavera
-    </div>
-
-    <div class="precio">
-    $750 MXN
-    </div>
-
-    <a class="vivenu-btn yourStylingClass" href="https://tickets.payuticket.com/event/adidas-hub-trail-12k-22k-la-primavera-gdl-y4ng13?useEmbed=true">COMPRAR BOLETOS</a>
 
     </div>
 
-    </div>
 
-    <div class="card">
+  </footer>
 
-    <img src="3.jpg">g
 
-    <div class="info">
 
-    <h3>Night Run 5K</h3>
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
 
-    <div class="fecha">
-    8 Octubre 2026
-    </div>
+  <script>
 
-    <div class="lugar">
-    Monterrey, Nuevo León
-    </div>
 
-    <div class="precio">
-    $350 MXN
-    </div>
+    const calendarDays =
+      document.getElementById(
+        "calendarDays"
+      );
 
-    <button class="compra">
-    Comprar boleto
-    </button>
 
-    </div>
+    const monthTitle =
+      document.getElementById(
+        "monthTitle"
+      );
 
-    </div>
 
-    </div>
+    const prevMonth =
+      document.getElementById(
+        "prevMonth"
+      );
 
-    </section>
 
-    <section class="sponsors">
+    const nextMonth =
+      document.getElementById(
+        "nextMonth"
+      );
 
-    <h2>Patrocinadores</h2>
 
-    <div class="logos">
 
-    <div class="logo-box">ADIDAS</div>
+    /* =========================
+       MES INICIAL
+    ========================== */
 
-    <div class="logo-box">NIKE</div>
+    let currentDate =
+      new Date(
+        2026,
+        7,
+        1
+      );
 
-    <div class="logo-box">PUMA</div>
 
-    <div class="logo-box">ASICS</div>
 
-    </div>
+    /* =========================
+       FECHAS Y LINKS
+       
+       AQUÍ COLOCAS EL <a>
+       DE CADA FECHA.
+    ========================== */
 
-    </section>
+    const availableDates = {
 
-    <footer>
+      "2026-08-24": {
 
-    © 2026 Run Events - Demo de Venta de Boletos
+        url:
+          "https://prueba.tuticket.com.mx/checkout/cinedot-mnmq6r?useEmbed=true"
 
-    </footer>
+      },
 
-    </body>
-    </html>
+
+      "2026-08-25": {
+
+        url:
+          "https://prueba.tuticket.com.mx/checkout/cinedot-5ysibd?useEmbed=true"
+
+      },
+
+
+      "2026-08-27": {
+
+        url:
+          "https://prueba.tuticket.com.mx/event/cinedot-27agosto?useEmbed=true"
+
+      },
+
+
+      "2026-08-28": {
+
+        url:
+          "https://prueba.tuticket.com.mx/checkout/cinedot-mv8k3g?useEmbed=true"
+
+      },
+
+    };
+
+
+
+    /* =========================
+       FORMATEAR FECHA
+    ========================== */
+
+    function formatDate(date) {
+
+      const year =
+        date.getFullYear();
+
+      const month =
+        String(
+          date.getMonth() + 1
+        ).padStart(2, "0");
+
+      const day =
+        String(
+          date.getDate()
+        ).padStart(2, "0");
+
+      return `${year}-${month}-${day}`;
+
+    }
+
+
+
+    /* =========================
+       CALENDARIO
+    ========================== */
+
+    function renderCalendar() {
+
+
+      calendarDays.innerHTML = "";
+
+
+      const year =
+        currentDate.getFullYear();
+
+
+      const month =
+        currentDate.getMonth();
+
+
+      const firstDay =
+        new Date(
+          year,
+          month,
+          1
+        ).getDay();
+
+
+      const daysInMonth =
+        new Date(
+          year,
+          month + 1,
+          0
+        ).getDate();
+
+
+
+      /* Nombre del mes */
+
+      const monthName =
+        new Intl.DateTimeFormat(
+          "es-MX",
+          {
+            month: "long",
+            year: "numeric"
+          }
+        ).format(
+          currentDate
+        );
+
+
+      monthTitle.textContent =
+        monthName
+          .charAt(0)
+          .toUpperCase()
+        +
+        monthName.slice(1);
+
+
+
+      /* Espacios */
+
+      for (
+        let i = 0;
+        i < firstDay;
+        i++
+      ) {
+
+        const emptyDay =
+          document.createElement(
+            "div"
+          );
+
+        emptyDay.className =
+          "day empty";
+
+        calendarDays.appendChild(
+          emptyDay
+        );
+
+      }
+
+
+
+      /* Crear días */
+
+      for (
+        let day = 1;
+        day <= daysInMonth;
+        day++
+      ) {
+
+
+        const date =
+          new Date(
+            year,
+            month,
+            day
+          );
+
+
+        const dateString =
+          formatDate(
+            date
+          );
+
+
+        const cell =
+          document.createElement(
+            "div"
+          );
+
+
+        cell.className =
+          "day";
+
+
+
+        /* Número */
+
+        const number =
+          document.createElement(
+            "span"
+          );
+
+
+        number.className =
+          "day-number";
+
+
+        number.textContent =
+          day;
+
+
+        cell.appendChild(
+          number
+        );
+
+
+
+        /*
+         * BUSCAR LINK DE LA FECHA
+         */
+
+        const event =
+          availableDates[
+            dateString
+          ];
+
+
+        if (event) {
+
+
+          cell.classList.add(
+            "available"
+          );
+
+
+          /*
+           * AQUÍ CREAMOS
+           * UN <a> REAL
+           */
+
+          const ticketLink =
+            document.createElement(
+              "a"
+            );
+
+
+          /*
+           * CLASES DEL <a>
+           *
+           * Puedes poner exactamente
+           * las clases de TuTicket:
+           */
+
+          ticketLink.className =
+            "vivenu-btn yourStylingClass";
+
+
+          /*
+           * URL INDIVIDUAL
+           */
+
+          ticketLink.href =
+            event.url;
+
+
+          /*
+           * TEXTO DEL LINK
+           */
+
+          ticketLink.textContent =
+            "Comprar entradas";
+
+
+          /*
+           * Opcional:
+           * abrir en la misma ventana.
+           */
+
+          ticketLink.target =
+            "_self";
+
+
+          /*
+           * Añadir el <a>
+           * dentro del día.
+           */
+
+          cell.appendChild(
+            ticketLink
+          );
+
+        }
+
+
+
+        calendarDays.appendChild(
+          cell
+        );
+
+      }
+
+    }
+
+
+
+    /* =========================
+       MES ANTERIOR
+    ========================== */
+
+    prevMonth.addEventListener(
+      "click",
+      function(event) {
+
+        event.preventDefault();
+
+        currentDate.setMonth(
+          currentDate.getMonth() - 1
+        );
+
+        renderCalendar();
+
+      }
+    );
+
+
+
+    /* =========================
+       MES SIGUIENTE
+    ========================== */
+
+    nextMonth.addEventListener(
+      "click",
+      function(event) {
+
+        event.preventDefault();
+
+        currentDate.setMonth(
+          currentDate.getMonth() + 1
+        );
+
+        renderCalendar();
+
+      }
+    );
+
+
+
+    /* =========================
+       INICIAR
+    ========================== */
+
+    renderCalendar();
+
+
+  </script>
+
+</body>
+
+</html>
