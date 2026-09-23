@@ -1,1433 +1,815 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Acuático San Carlos | La diversión nunca termina</title>
-
-<style>
-
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
-}
-
-body{
-    font-family:Arial, Helvetica, sans-serif;
-    background:#f4fbfd;
-    color:#073642;
-}
-
-/* =========================
-   VARIABLES
-========================= */
-
-:root{
-    --azul:#00a9df;
-    --azul-oscuro:#00769e;
-    --azul-profundo:#063946;
-    --turquesa:#19c4d8;
-    --amarillo:#ffd429;
-    --blanco:#ffffff;
-    --gris:#edf8fb;
-    --texto:#5e777f;
-}
-
-
-/* =========================
-   HEADER
-========================= */
-
-header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-
-    background:white;
-
-    box-shadow:0 3px 20px rgba(0,0,0,.08);
-}
-
-.navbar{
-    max-width:1200px;
-    min-height:82px;
-
-    margin:auto;
-    padding:10px 20px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    gap:20px;
-}
-
-.logo{
-    text-decoration:none;
-    color:var(--azul);
-
-    font-size:25px;
-    font-weight:900;
-    line-height:.9;
-}
-
-.logo span{
-    display:block;
-    color:var(--azul-profundo);
-}
-
-.logo small{
-    display:block;
-
-    margin-top:8px;
-
-    color:#7a9198;
-
-    font-size:8px;
-    letter-spacing:2px;
-}
-
-.menu{
-    display:flex;
-    align-items:center;
-    gap:15px;
-}
-
-.menu a{
-    color:#073642;
-    text-decoration:none;
-
-    font-size:13px;
-    font-weight:800;
-
-    transition:.3s;
-}
-
-.menu a:hover{
-    color:var(--azul);
-}
-
-.btn-calendario{
-    border:2px solid var(--azul);
-
-    padding:10px 17px;
-
-    border-radius:25px;
-}
-
-.btn-comprar{
-    background:var(--azul);
-
-    color:white !important;
-
-    padding:13px 21px;
-
-    border-radius:25px;
-
-    box-shadow:0 8px 20px rgba(0,169,223,.25);
-}
-
-.btn-comprar:hover{
-    background:var(--azul-profundo);
-}
-
-
-/* =========================
-   HERO
-========================= */
-
-.hero{
-
-    min-height:680px;
-
-    display:flex;
-    align-items:center;
-
-    position:relative;
-
-    background-image:
-        linear-gradient(
-            90deg,
-            rgba(2,39,51,.88),
-            rgba(2,39,51,.55),
-            rgba(2,39,51,.15)
-        ),
-
-        url("sc.jpg");
-
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-}
-
-.hero-content{
-    max-width:1200px;
-    width:100%;
-
-    margin:auto;
-
-    padding:70px 30px;
-}
-
-.hero h1{
-
-    max-width:700px;
-
-    color:white;
-
-    font-size:clamp(48px,7vw,82px);
-
-    line-height:.95;
-
-    font-weight:900;
-
-    text-transform:uppercase;
-}
-
-.hero h1 span{
-    display:block;
-
-    color:#51d9ff;
-}
-
-.hero p{
-
-    max-width:600px;
-
-    margin-top:28px;
-
-    color:white;
-
-    font-size:18px;
-
-    line-height:1.7;
-}
-
-.hero-buttons{
-
-    display:flex;
-    flex-wrap:wrap;
-
-    gap:15px;
-
-    margin-top:32px;
-}
-
-.hero-button{
-
-    display:inline-block;
-
-    padding:15px 28px;
-
-    border-radius:30px;
-
-    text-decoration:none;
-
-    font-weight:900;
-
-    transition:.3s;
-}
-
-.hero-button:hover{
-    transform:translateY(-3px);
-}
-
-.hero-button.primary{
-    background:var(--azul);
-    color:white;
-}
-
-.hero-button.secondary{
-    background:white;
-    color:var(--azul-profundo);
-}
-
-
-/* =========================
-   INTRO
-========================= */
-
-.intro{
-
-    padding:85px 20px;
-
-    background:white;
-
-    text-align:center;
-}
-
-.container{
-    max-width:1150px;
-    margin:auto;
-}
-
-.tag{
-
-    margin-bottom:12px;
-
-    color:var(--azul);
-
-    font-size:13px;
-
-    font-weight:900;
-
-    letter-spacing:3px;
-
-    text-transform:uppercase;
-}
-
-.intro h2{
-
-    font-size:clamp(35px,5vw,55px);
-
-    font-weight:900;
-}
-
-.intro h2 span{
-    color:var(--azul);
-}
-
-.intro p{
-
-    max-width:780px;
-
-    margin:20px auto 0;
-
-    color:var(--texto);
-
-    font-size:17px;
-
-    line-height:1.8;
-}
-
-
-/* =========================
-   EXPERIENCIAS
-========================= */
-
-.experiencias{
-
-    padding:90px 20px;
-
-    background:#edf9fc;
-}
-
-.section-title{
-
-    margin-bottom:45px;
-
-    text-align:center;
-}
-
-.section-title h2{
-
-    font-size:clamp(35px,5vw,55px);
-
-    font-weight:900;
-}
-
-.section-title h2 span{
-    color:var(--azul);
-}
-
-.section-title p{
-
-    max-width:700px;
-
-    margin:15px auto 0;
-
-    color:var(--texto);
-
-    line-height:1.7;
-}
-
-
-/* =========================
-   CARDS
-========================= */
-
-.cards{
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap:25px;
-}
-
-.card{
-
-    overflow:hidden;
-
-    background:white;
-
-    border-radius:18px;
-
-    box-shadow:
-        0 10px 35px rgba(5,55,70,.10);
-
-    transition:.3s;
-}
-
-.card:hover{
-
-    transform:translateY(-7px);
-
-    box-shadow:
-        0 18px 45px rgba(5,55,70,.18);
-}
-
-.card img{
-
-    width:100%;
-
-    height:240px;
-
-    display:block;
-
-    object-fit:cover;
-
-    transition:.4s;
-}
-
-.card:hover img{
-    transform:scale(1.04);
-}
-
-.card-content{
-    padding:25px;
-}
-
-.card-content h3{
-
-    margin-bottom:10px;
-
-    color:var(--azul-profundo);
-
-    font-size:23px;
-}
-
-.card-content p{
-
-    color:var(--texto);
-
-    line-height:1.7;
-}
-
-.card-link{
-
-    display:inline-block;
-
-    margin-top:18px;
-
-    color:var(--azul);
-
-    text-decoration:none;
-
-    font-weight:900;
-}
-
-
-/* =========================
-   PRECIOS
-========================= */
-
-.precios{
-
-    padding:90px 20px;
-
-    background:var(--azul-profundo);
-
-    color:white;
-}
-
-.precios .section-title h2{
-    color:white;
-}
-
-.precios .section-title p{
-    color:#b8d3da;
-}
-
-.price-cards{
-
-    max-width:900px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        repeat(2,1fr);
-
-    gap:25px;
-}
-
-.price-card{
-
-    padding:35px;
-
-    background:#084a5c;
-
-    border-radius:18px;
-
-    text-align:center;
-
-    border:1px solid rgba(255,255,255,.10);
-}
-
-.price-card h3{
-
-    font-size:22px;
-
-    margin-bottom:15px;
-}
-
-.price{
-
-    color:#55dcff;
-
-    font-size:55px;
-
-    font-weight:900;
-}
-
-.price-card p{
-
-    margin-top:10px;
-
-    color:#c1d8de;
-}
-
-.price-button{
-
-    display:inline-block;
-
-    margin-top:25px;
-
-    padding:13px 25px;
-
-    background:var(--azul);
-
-    color:white;
-
-    text-decoration:none;
-
-    border-radius:25px;
-
-    font-weight:900;
-}
-
-.price-button:hover{
-
-    background:white;
-
-    color:var(--azul-profundo);
-}
-
-
-/* =========================
-   CALENDARIO CTA
-========================= */
-
-.calendar-cta{
-
-    padding:90px 20px;
-
-    background:
-        linear-gradient(
-            135deg,
-            #00a9df,
-            #00718e
-        );
-
-    color:white;
-
-    text-align:center;
-}
-
-.calendar-cta h2{
-
-    font-size:clamp(35px,5vw,55px);
-
-    margin-bottom:15px;
-}
-
-.calendar-cta p{
-
-    max-width:680px;
-
-    margin:auto;
-
-    color:#e0faff;
-
-    line-height:1.7;
-}
-
-.calendar-button{
-
-    display:inline-block;
-
-    margin-top:28px;
-
-    padding:15px 30px;
-
-    background:white;
-
-    color:var(--azul-profundo);
-
-    text-decoration:none;
-
-    border-radius:30px;
-
-    font-weight:900;
-
-    transition:.3s;
-}
-
-.calendar-button:hover{
-    transform:translateY(-3px);
-}
-
-
-/* =========================
-   UBICACIÓN
-========================= */
-
-.ubicacion{
-
-    padding:85px 20px;
-
-    background:white;
-
-    text-align:center;
-}
-
-.ubicacion h2{
-
-    margin-bottom:15px;
-
-    font-size:42px;
-
-    font-weight:900;
-}
-
-.ubicacion p{
-
-    color:var(--texto);
-
-    line-height:1.8;
-}
-
-
-/* =========================
-   FOOTER
-========================= */
-
-footer{
-
-    padding:50px 20px 20px;
-
-    background:#031d25;
-
-    color:white;
-}
-
-.footer-grid{
-
-    max-width:1150px;
-
-    margin:auto;
-
-    display:grid;
-
-    grid-template-columns:
-        2fr 1fr 1fr;
-
-    gap:40px;
-}
-
-.footer-column h3{
-
-    margin-bottom:15px;
-
-    color:#55dcff;
-}
-
-.footer-column p,
-.footer-column a{
-
-    color:#a9c1c8;
-
-    font-size:14px;
-
-    line-height:1.8;
-
-    text-decoration:none;
-}
-
-.footer-column a:hover{
-    color:white;
-}
-
-.footer-bottom{
-
-    max-width:1150px;
-
-    margin:30px auto 0;
-
-    padding-top:20px;
-
-    border-top:
-        1px solid rgba(255,255,255,.10);
-
-    color:#6d858c;
-
-    text-align:center;
-
-    font-size:12px;
-}
-
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:950px){
-
-    .menu a:not(.btn-calendario):not(.btn-comprar){
-        display:none;
-    }
-
-    .cards{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .footer-grid{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-}
-
-@media(max-width:650px){
-
-    .navbar{
-
-        flex-direction:column;
-
-        padding:18px;
-    }
-
-    .menu{
-
-        flex-wrap:wrap;
-
-        justify-content:center;
-    }
-
-    .hero{
-
-        min-height:620px;
-    }
-
-    .hero-content{
-        padding:50px 20px;
-    }
-
-    .hero h1{
-        font-size:48px;
-    }
-
-    .hero p{
-        font-size:16px;
-    }
-
-    .cards{
-        grid-template-columns:1fr;
-    }
-
-    .price-cards{
-        grid-template-columns:1fr;
-    }
-
-    .footer-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-</style>
-<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Museo del Perfume | MUPE</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f8f4ef;
+            color: #2b2422;
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        header {
+            background: #64152f;
+            color: white;
+            padding: 16px 7%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 3px 15px rgba(0,0,0,.15);
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .logo span {
+            display: block;
+            font-size: 11px;
+            letter-spacing: 2px;
+            font-weight: normal;
+            margin-top: 3px;
+        }
+
+        nav {
+            display: flex;
+            gap: 25px;
+            align-items: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: .3s;
+        }
+
+        nav a:hover {
+            color: #d8b36a;
+        }
+
+        .btn-menu {
+            background: #d8b36a;
+            color: #3d2026 !important;
+            padding: 11px 18px;
+            border-radius: 3px;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            min-height: 650px;
+            background:
+                linear-gradient(rgba(50,20,25,.35), rgba(50,20,25,.65)),
+                url("https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/Portada-expo-Yupica.png")
+                center/cover no-repeat;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 60px 20px;
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hero h1 {
+            font-size: 68px;
+            letter-spacing: 5px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d8b36a;
+            color: #351e23;
+            text-decoration: none;
+            padding: 15px 30px;
+            font-weight: bold;
+            border-radius: 3px;
+            transition: .3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            background: #ead08d;
+        }
+
+        /* =========================
+           SECCIONES
+        ========================= */
+
+        section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 38px;
+            color: #64152f;
+            margin-bottom: 12px;
+        }
+
+        .section-title p {
+            color: #746968;
+            max-width: 750px;
+            margin: auto;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           INTRO
+        ========================= */
+
+        .intro {
+            background: #fff;
+        }
+
+        .intro-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .intro-text h2 {
+            color: #64152f;
+            font-size: 38px;
+            margin-bottom: 20px;
+        }
+
+        .intro-text p {
+            line-height: 1.9;
+            color: #665c59;
+            margin-bottom: 15px;
+        }
+
+        .intro-image img {
+            width: 100%;
+            height: 430px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0,0,0,.15);
+        }
+
+        /* =========================
+           EXPERIENCIAS
+        ========================= */
+
+        .experiencias {
+            background: #eee6df;
+        }
+
+        .cards {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+        }
+
+        .card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            color: #64152f;
+            font-size: 23px;
+            margin-bottom: 12px;
+        }
+
+        .card-content p {
+            color: #706562;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           PRECIOS
+        ========================= */
+
+        .precios {
+            background: #fff;
+        }
+
+        .price-grid {
+            max-width: 1100px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .price-card {
+            border: 1px solid #dfd4cd;
+            padding: 30px 20px;
+            text-align: center;
+            background: #fbf8f5;
+            border-radius: 4px;
+        }
+
+        .price-card h3 {
+            color: #64152f;
+            margin-bottom: 15px;
+        }
+
+        .price {
+            font-size: 38px;
+            font-weight: bold;
+            color: #b08843;
+            margin-bottom: 10px;
+        }
+
+        .price-card p {
+            color: #746968;
+            line-height: 1.5;
+        }
+
+        /* =========================
+           CALENDARIO CTA
+        ========================= */
+
+        .calendar-section {
+            background:
+                linear-gradient(rgba(70,15,35,.88), rgba(70,15,35,.88)),
+                url("https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/Festival-del-cacao-y-el-perfume.png")
+                center/cover;
+            color: white;
+            text-align: center;
+        }
+
+        .calendar-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+
+        .calendar-section p {
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.7;
+        }
+
+        /* =========================
+           GALERIA
+        ========================= */
+
+        .galeria {
+            background: #eee6df;
+        }
+
+        .gallery-grid {
+            max-width: 1200px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 3px;
+            transition: .3s;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+        }
+
+        /* =========================
+           UBICACION
+        ========================= */
+
+        .ubicacion {
+            background: white;
+        }
+
+        .location-box {
+            max-width: 900px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .location-box h2 {
+            color: #64152f;
+            margin-bottom: 20px;
+            font-size: 35px;
+        }
+
+        .location-box p {
+            color: #675e5b;
+            line-height: 1.9;
+            margin-bottom: 10px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            background: #3b1824;
+            color: white;
+            text-align: center;
+            padding: 35px 20px;
+        }
+
+        footer h3 {
+            font-size: 24px;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            color: #d7c9c6;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 45px;
+            }
+
+            .intro-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            section {
+                padding: 60px 5%;
+            }
+
+            .hero {
+                min-height: 550px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+        }
+    </style>
 </head>
-
-
+<script type="text/javascript" src="https://vivenu.dev/web/deliver/js/v1/embed.js"></script>
 <body>
-
-
-<!-- =====================================
-     MENÚ
-===================================== -->
 
 <header>
 
-<nav class="navbar">
+    <div class="logo">
+        MUPE
+        <span>MUSEO DEL PERFUME</span>
+    </div>
 
-<a href="index.html" class="logo">
+    <nav>
+        <a href="#inicio">INICIO</a>
+        <a href="#experiencias">EXPERIENCIAS</a>
+        <a href="#precios">PRECIOS</a>
+        <a href="calendario.html">CALENDARIO</a>
 
-    ACUÁTICO
-    <span>SAN CARLOS</span>
-
-    <small>
-        IZÚCAR DE MATAMOROS · PUEBLA
-    </small>
-
-</a>
-
-
-<div class="menu">
-
-<a href="#inicio">
-    INICIO
-</a>
-
-<a href="#experiencias">
-    EXPERIENCIAS
-</a>
-
-<a href="#precios">
-    PRECIOS
-</a>
-
-<a
-    href="calendario.html"
-    class="btn-calendario">
-
-    CALENDARIO
-
-</a>
-
-
-<!-- CAMBIA ESTE LINK POR TU LINK DE VENTA -->
-
-<a
-    href="https://tickets.payuticket.com/event/hologram-zoo-copy-g9pgha?recurrenceSelection=true"
-    target="_blank"
-    class="btn-comprar">
-
-    🎟️ COMPRAR BOLETO
-
-</a>
-
-</div>
-
-</nav>
+        <!-- CAMBIA ESTE LINK POR TU LINK REAL -->
+        <a class="btn-menu"
+           href="https://tickets.payuticket.com/event/museo-del-perfume-qsev1b?recurrenceSelection=true"
+           target="_blank">
+            COMPRAR BOLETOS
+        </a>
+    </nav>
 
 </header>
 
 
-
-<!-- =====================================
+<!-- =========================
      HERO
-===================================== -->
+========================= -->
 
 <section class="hero" id="inicio">
 
-<div class="hero-content">
+    <div class="hero-content">
 
-<h1>
+        <h1>MUSEO DEL PERFUME</h1>
 
-    La diversión
-    <span>nunca termina</span>
+        <p>
+            Un espacio inmersivo dedicado a la historia,
+            el arte, la ciencia y la cultura de los aromas.
+        </p>
 
-</h1>
+        <a class="btn"
+           href="https://tickets.payuticket.com/event/museo-del-perfume-qsev1b?recurrenceSelection=true"
+           target="_blank">
+            COMPRAR BOLETOS
+        </a>
 
-<p>
-
-    Vive momentos llenos de diversión,
-    alegría y emoción en Acuático San Carlos.
-    Disfruta nuestras albercas, aguas termales,
-    toboganes y espacios para toda la familia.
-
-</p>
-
-
-<div class="hero-buttons">
-
-<a
-    href="https://tickets.payuticket.com/event/hologram-zoo-copy-g9pgha?recurrenceSelection=true"
-    target="_blank"
-    class="hero-button primary">
-
-    🎟️ COMPRAR BOLETO
-
-</a>
-
-<a
-    href="calendario.html"
-    class="hero-button secondary">
-
-    📅 VER CALENDARIO
-
-</a>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-
-<!-- =====================================
+<!-- =========================
      INTRO
-===================================== -->
+========================= -->
 
 <section class="intro">
 
-<div class="container">
+    <div class="intro-grid">
 
-<div class="tag">
-    PARQUE ACUÁTICO SAN CARLOS
-</div>
+        <div class="intro-text">
 
-<h2>
+            <h2>Descubre el universo de los aromas</h2>
 
-    Un día lleno de
-    <span>diversión</span>
+            <p>
+                El Museo del Perfume MUPE es un espacio conceptual,
+                inmersivo, de intercambio cultural y artístico que
+                busca difundir y comunicar la cultura de los aromas
+                y el perfume en México.
+            </p>
 
-</h2>
+            <p>
+                Recorre sus exposiciones y descubre una colección
+                de piezas históricas, frascos, materias primas y
+                experiencias relacionadas con el mundo de la perfumería.
+            </p>
 
-<p>
+            <a class="btn" href="calendario.html">
+                VER CALENDARIO
+            </a>
 
-    En Parque Acuático San Carlos queremos
-    que pases momentos llenos de diversión,
-    alegría y emoción. Atrévete a disfrutar
-    de todas las zonas de entretenimiento
-    que tenemos para ti y tu familia.
+        </div>
 
-</p>
+        <div class="intro-image">
 
-</div>
+            <img
+                src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/60_FLORAMYELTPIVER_MuseoPerfumes__54-scaled.jpg"
+                alt="Colección del Museo del Perfume">
+
+        </div>
+
+    </div>
 
 </section>
 
 
-
-<!-- =====================================
+<!-- =========================
      EXPERIENCIAS
-===================================== -->
+========================= -->
 
-<section
-    class="experiencias"
-    id="experiencias">
+<section class="experiencias" id="experiencias">
 
-<div class="container">
+    <div class="section-title">
 
-<div class="section-title">
+        <h2>Experiencias</h2>
 
-<div class="tag">
-    DESCUBRE EL PARQUE
-</div>
+        <p>
+            Conoce algunas de las experiencias que puedes encontrar
+            en el Museo del Perfume.
+        </p>
 
-<h2>
+    </div>
 
-    Nuestras
-    <span>experiencias</span>
 
-</h2>
+    <div class="cards">
 
-<p>
+        <div class="card">
 
-    Conoce algunas de las zonas que puedes
-    disfrutar durante tu visita.
+            <img
+                src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/Portada-expo-Yupica.png"
+                alt="YUPICA">
 
-</p>
+            <div class="card-content">
 
-</div>
+                <h3>Exposiciones</h3>
 
+                <p>
+                    Explora exposiciones temporales que conectan
+                    el perfume con el arte, la tecnología,
+                    la cultura y la percepción.
+                </p>
 
-<div class="cards">
+            </div>
 
+        </div>
 
-<!-- ZONA AQUA -->
 
-<div class="card">
+        <div class="card">
 
-<img
-src="https://acuaticosancarlos.com.mx/v2/wp-content/uploads/2018/09/parque-acuatico-san-carlos-puebla-600x427.png"
-alt="Acuático San Carlos">
+            <img
+                src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2025/11/2.jpg"
+                alt="Museo del Perfume">
 
-<div class="card-content">
+            <div class="card-content">
 
-<h3>
-    🌊 Zona Aqua
-</h3>
+                <h3>Colección histórica</h3>
 
-<p>
+                <p>
+                    Descubre frascos, objetos y piezas que forman
+                    parte de la historia de la perfumería.
+                </p>
 
-    Disfruta nuestras albercas con
-    aguas termales y cristalinas,
-    con temperaturas de hasta 36 °C.
+            </div>
 
-</p>
+        </div>
 
-<a href="#precios" class="card-link">
-    CONOCER MÁS →
-</a>
 
-</div>
+        <div class="card">
 
-</div>
+            <img
+                src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/52_GRUPO2__51-scaled.jpg"
+                alt="Colección de perfumes">
 
+            <div class="card-content">
 
+                <h3>Experiencias sensoriales</h3>
 
-<!-- ZONA PEQUES -->
+                <p>
+                    Conoce el mundo del perfume a través de los
+                    aromas, la memoria, la creatividad y los sentidos.
+                </p>
 
-<div class="card">
+            </div>
 
-<img
-src="https://acuaticosancarlos.com.mx/v2/wp-content/uploads/2018/09/diversion-parque-acuatico-san-carlos-500x224.png"
-alt="Zona infantil">
+        </div>
 
-<div class="card-content">
-
-<h3>
-    🛝 Zona Peques
-</h3>
-
-<p>
-
-    Un espacio pensado especialmente
-    para los pequeños, con juegos y
-    áreas para disfrutar en familia.
-
-</p>
-
-<a href="#precios" class="card-link">
-    CONOCER MÁS →
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- ZONA CAMPING -->
-
-<div class="card">
-
-<img
-src="https://acuaticosancarlos.com.mx/v2/wp-content/uploads/2018/09/mapa-parque-acuatico-san-carlos-500x369.png"
-alt="Parque Acuático San Carlos">
-
-<div class="card-content">
-
-<h3>
-    ⛺ Zona Camping
-</h3>
-
-<p>
-
-    Disfruta una experiencia diferente
-    y quédate a vivir la aventura dentro
-    del parque.
-
-</p>
-
-<a href="#precios" class="card-link">
-    CONOCER MÁS →
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- TOBOGANES -->
-
-<div class="card">
-
-<img
-src="https://acuaticosancarlos.com.mx/v2/wp-content/uploads/2018/09/parque-acuatico-san-carlos-puebla-600x427.png"
-alt="Toboganes">
-
-<div class="card-content">
-
-<h3>
-    🛝 Toboganes
-</h3>
-
-<p>
-
-    Atrévete a disfrutar de nuestros
-    sensacionales toboganes y vive
-    la emoción al máximo.
-
-</p>
-
-<a href="#precios" class="card-link">
-    CONOCER MÁS →
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- ZONA XTREMA -->
-
-<div class="card">
-
-<img
-src="https://acuaticosancarlos.com.mx/v2/wp-content/uploads/2018/09/diversion-parque-acuatico-san-carlos-500x224.png"
-alt="Zona Xtrema">
-
-<div class="card-content">
-
-<h3>
-    🎯 Zona Xtrema
-</h3>
-
-<p>
-
-    Completa tu diversión con actividades
-    para poner a prueba tu habilidad
-    y destreza.
-
-</p>
-
-<a href="#precios" class="card-link">
-    CONOCER MÁS →
-</a>
-
-</div>
-
-</div>
-
-
-
-<!-- ZONA SNACKS -->
-
-<div class="card">
-
-<img
-src="https://acuaticosancarlos.com.mx/v2/wp-content/uploads/2018/09/parque-acuatico-san-carlos-puebla-600x427.png"
-alt="Zona Snacks">
-
-<div class="card-content">
-
-<h3>
-    🍔 Zona Snacks
-</h3>
-
-<p>
-
-    Encuentra diferentes opciones para
-    comer, refrescarte y continuar
-    disfrutando tu visita.
-
-</p>
-
-<a href="#precios" class="card-link">
-    CONOCER MÁS →
-</a>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
+    </div>
 
 </section>
 
 
-
-<!-- =====================================
+<!-- =========================
      PRECIOS
-===================================== -->
+========================= -->
 
-<section
-    class="precios"
-    id="precios">
+<section class="precios" id="precios">
 
-<div class="container">
+    <div class="section-title">
 
-<div class="section-title">
+        <h2>Precios</h2>
 
-<div class="tag">
-    TARIFAS
-</div>
+        <p>
+            Consulta las tarifas de acceso al museo.
+        </p>
 
-<h2>
-    Elige tu <span>entrada</span>
-</h2>
-
-<p>
-
-    Precios de referencia publicados
-    actualmente por el parque.
-
-</p>
-
-</div>
+    </div>
 
 
-<div class="price-cards">
+    <div class="price-grid">
+
+        <div class="price-card">
+
+            <h3>Nacionales</h3>
+
+            <div class="price">$100</div>
+
+            <p>Acceso general</p>
+
+        </div>
 
 
-<div class="price-card">
+        <div class="price-card">
 
-<h3>
-    Entrada General Adulto
-</h3>
+            <h3>Extranjeros</h3>
 
-<div class="price">
-    $200
-</div>
+            <div class="price">$150</div>
 
-<p>
-    Acceso general al parque
-</p>
+            <p>Acceso general</p>
 
-<a
-href="https://AQUI-PONES-LINK-ADULTO"
-target="_blank"
-class="price-button">
-
-    🎟️ COMPRAR
-
-</a>
-
-</div>
+        </div>
 
 
+        <div class="price-card">
 
-<div class="price-card">
+            <h3>Estudiantes</h3>
 
-<h3>
-    Entrada General Niño
-</h3>
+            <div class="price">$50</div>
 
-<div class="price">
-    $160
-</div>
+            <p>Presentando identificación</p>
 
-<p>
-    Acceso general al parque
-</p>
+        </div>
 
-<a
-href="https://AQUI-PONES-LINK-NINO"
-target="_blank"
-class="price-button">
 
-    🎟️ COMPRAR
+        <div class="price-card">
 
-</a>
+            <h3>Menores de 7</h3>
 
-</div>
+            <div class="price">$0</div>
 
-</div>
+            <p>Entrada gratuita</p>
 
-</div>
+        </div>
+
+    </div>
 
 </section>
 
 
+<!-- =========================
+     CALENDARIO
+========================= -->
 
-<!-- =====================================
-     CTA CALENDARIO
-===================================== -->
+<section class="calendar-section">
 
-<section class="calendar-cta">
+    <h2>Próximos eventos</h2>
 
-<div class="container">
+    <p>
+        Consulta las fechas disponibles, conoce las experiencias
+        especiales y encuentra el acceso correspondiente a cada evento.
+    </p>
 
-<h2>
-    ¿Cuándo quieres visitarnos?
-</h2>
-
-<p>
-
-    Consulta nuestro calendario,
-    selecciona tu fecha y compra
-    tus boletos de manera rápida
-    y sencilla.
-
-</p>
-
-<a
-href="calendario.html"
-class="calendar-button">
-
-    📅 VER CALENDARIO
-
-</a>
-
-</div>
+    <a class="btn" href="calendario.html">
+        VER CALENDARIO
+    </a>
 
 </section>
 
 
+<!-- =========================
+     GALERIA
+========================= -->
 
-<!-- =====================================
-     UBICACIÓN
-===================================== -->
+<section class="galeria">
+
+    <div class="section-title">
+
+        <h2>Galería</h2>
+
+        <p>
+            Una pequeña selección de imágenes tomadas del contenido
+            publicado por el Museo del Perfume.
+        </p>
+
+    </div>
+
+
+    <div class="gallery-grid">
+
+        <img
+            src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/60_FLORAMYELTPIVER_MuseoPerfumes__54-scaled.jpg"
+            alt="Floramye">
+
+        <img
+            src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/52_GRUPO2__51-scaled.jpg"
+            alt="Colección de perfumes">
+
+        <img
+            src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2026/09/Festival-del-cacao-y-el-perfume.png"
+            alt="Festival del Cacao">
+
+        <img
+            src="https://cdmx.museodelperfume.com.mx/wp-content/uploads/2025/07/Noche-de-Museos.jpeg"
+            alt="Noche de Museos">
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     UBICACION
+========================= -->
 
 <section class="ubicacion">
 
-<div class="container">
+    <div class="location-box">
 
-<div class="tag">
-    VISÍTANOS
-</div>
+        <h2>Visítanos</h2>
 
-<h2>
-    Nuestra ubicación
-</h2>
+        <p>
+            <strong>Museo del Perfume – MUPE</strong>
+        </p>
 
-<p>
+        <p>
+            Tacuba #12, Centro Histórico,
+            Ciudad de México.
+        </p>
 
-    Camino a los limones s/n.
-    Comunidad de San Carlos,
-    Izúcar de Matamoros, Puebla.
+        <p>
+            Martes a domingo · 10:00 a 17:00 hrs
+        </p>
 
-</p>
+        <br>
 
-<br>
+        <a
+            class="btn"
+            href="https://www.google.com/maps/search/?api=1&query=Museo+del+Perfume+Tacuba+12+CDMX"
+            target="_blank">
+            VER UBICACIÓN
+        </a>
 
-<p>
-
-    📞 01 (243) 432 50 98
-    &nbsp; | &nbsp;
-    01 (243) 432 50 19
-
-</p>
-
-<p>
-
-    ✉️ parque@acuaticosancarlos.com.mx
-
-</p>
-
-</div>
+    </div>
 
 </section>
 
 
-
-<!-- =====================================
+<!-- =========================
      FOOTER
-===================================== -->
+========================= -->
 
 <footer>
 
-<div class="footer-grid">
+    <h3>MUPE</h3>
 
+    <p>Museo del Perfume</p>
 
-<div class="footer-column">
-
-<h3>
-    Acuático San Carlos
-</h3>
-
-<p>
-
-    La diversión nunca termina.
-    Vive una experiencia llena de agua,
-    aventura y diversión para toda
-    la familia.
-
-</p>
-
-</div>
-
-
-
-<div class="footer-column">
-
-<h3>
-    Navegación
-</h3>
-
-<p>
-<a href="#inicio">
-    Inicio
-</a>
-</p>
-
-<p>
-<a href="#experiencias">
-    Experiencias
-</a>
-</p>
-
-<p>
-<a href="#precios">
-    Precios
-</a>
-</p>
-
-<p>
-<a href="calendario.html">
-    Calendario
-</a>
-</p>
-
-</div>
-
-
-
-<div class="footer-column">
-
-<h3>
-    Contacto
-</h3>
-
-<p>
-    📍 Izúcar de Matamoros, Puebla
-</p>
-
-<p>
-    📞 01 (243) 432 50 98
-</p>
-
-<p>
-    📞 01 (243) 432 50 19
-</p>
-
-<p>
-    ✉️ parque@acuaticosancarlos.com.mx
-</p>
-
-</div>
-
-</div>
-
-
-<div class="footer-bottom">
-
-    Acuático San Carlos © 2026
-    <br><br>
-    Demo de sistema de boletaje
-
-</div>
+    <p>
+        Cultura · Arte · Historia · Perfumería
+    </p>
 
 </footer>
-
 
 </body>
 </html>
